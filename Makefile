@@ -11,8 +11,8 @@ LIBFT_INC :=	./libft/inc/
 LIBFT := 		$(LIBFT_DIR)libft.a
 
 # Source and object files
-SRC		:= 
-OBJ		:= $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
+SRC		:= asm.c main.c
+OBJ		:= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 # Header files
 INC	:= 
@@ -29,7 +29,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 # Compile object files from source files
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(addprefix $(INC_DIR), $(INC))
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(addprefix $(INC_DIR), $(INC))
 	$(CC) $(FLAGS) -o $@ -c $< -I$(INC_DIR) -I $(LIBFT_INC)
 
 # Compile my library
