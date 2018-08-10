@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"asm.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"fcntl.h": "c"
 	}
 }

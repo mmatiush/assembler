@@ -15,7 +15,7 @@ SRC		:= asm.c main.c
 OBJ		:= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 # Header files
-INC	:= 
+INC	:= asm.h
 
 # Compiler and flags
 CC		:= gcc -g
@@ -26,11 +26,11 @@ all: lib obj_dir $(NAME)
 
 # Link object files into the executable
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME) $(LIBFT) -I $(INC_DIR) -I $(LIBFT_INC)
 
 # Compile object files from source files
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(addprefix $(INC_DIR), $(INC))
-	$(CC) $(FLAGS) -o $@ -c $< -I$(INC_DIR) -I $(LIBFT_INC)
+	$(CC) $(FLAGS) -o $@ -c $< -I $(INC_DIR) -I $(LIBFT_INC)
 
 # Compile my library
 lib:

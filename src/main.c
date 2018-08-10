@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "asm.h"
 
-int main(int argc, char const *argv[])
+int main(void)
 {
     compiler();
     return (0);
