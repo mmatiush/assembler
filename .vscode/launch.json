@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(lldb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/../example_cor_2/asm",
+            //"program": "${workspaceFolder}/../example_cor/assembler/asm",
+            "args": ["zork.s"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/../example_cor_2",
+            // "cwd": "${workspaceFolder}/../example_cor/assembler",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "lldb"
+        }
+    ]
+}

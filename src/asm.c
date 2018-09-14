@@ -1,5 +1,5 @@
 #include "libft.h"
-#include "asm.h"
+#include "op.h"
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -15,7 +15,7 @@ int		compiler(void)
 		exit(0);
 	}
 	n = write(fd, str, 17);
-	printf("%d", n);
+	printf("%d\n", n);
 	if (close(fd) < 0)
 	{
 		ft_putstr("Close error\n");

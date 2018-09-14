@@ -3,5 +3,7 @@
 		"asm.h": "c",
 		"libft.h": "c",
 		"fcntl.h": "c"
-	}
+	},
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false
 }
