@@ -1,4 +1,14 @@
-.name "zork"
+.name "zork
+
+
+
+
+
+
+
+
+
+"
        #asdas
 .comment "I'M ALIIIIVE"
 

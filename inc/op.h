@@ -1,5 +1,5 @@
-#ifndef ASM_H
-# define ASM_H
+#ifndef OP_H
+# define OP_H
 
 
 #define IND_SIZE				2
@@ -22,7 +22,8 @@
 #define COMMENT_CHAR			'#'
 #define LABEL_CHAR				':'
 #define DIRECT_CHAR				'%'
-#define SEPARATOR_CHAR			','	
+#define SEPARATOR_CHAR			','
+#define DBL_QUOTATION_CHAR		'"'
 
 #define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
 
@@ -54,6 +55,8 @@ typedef char	t_arg_type;
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
+
+
 
 typedef struct      s_op
 {

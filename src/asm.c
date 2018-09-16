@@ -1,25 +1,18 @@
 #include "libft.h"
 #include "op.h"
-#include <fcntl.h>
-#include <stdio.h>
+#include "asm.h"
 
-int		compiler(void)
+/*
+** Create a linked list where each node is one line from the .s file
+*/
+
+int		assembler(char *name)
 {
-	int fd;
-	int n;
-	char *str = "hello";
+	t_list		*list;
+	header_t	header;
 
-	if ((fd = open("write_test.cor", O_CREAT| O_APPEND | O_RDWR, 0777)) < 0)
-	{
-		ft_putstr("Open error\n");
-		exit(0);
-	}
-	n = write(fd, str, 17);
-	printf("%d\n", n);
-	if (close(fd) < 0)
-	{
-		ft_putstr("Close error\n");
-		exit(0);		
-	}
+	read_data(&list, name);
+	validate_header(list, header);
+	//проверить валидность листа, создать файл и записывать все в него;
 	return (1);
 }
