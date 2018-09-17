@@ -3,16 +3,17 @@
 
 static char *error_text[] =
 {
-	"Wrong number of parameters.\n\tUsage: ./asm <filenme.s>",
-	"Wrong file extension.\n\tUsage: ./asm <filenme.s>",
+	"Wrong number of parameters\n\tUsage: ./asm <filenme.s>",
+	"Wrong file extension\n\tUsage: ./asm <filenme.s>",
 	"Failed file opening",
-	"Lexical error",
+	"Extra [ \" ]",
+	"Couldn't allocate memory for a new node in the add_to_list() function", // 4
 	""
 };
 
 int		print_error(const int error_num)
 {
-	ft_printf("Error:\n%s\n", error_text[error_num]);
+	ft_printf("Error: %s\n", error_text[error_num]);
 	return (-1);
 }
 

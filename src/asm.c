@@ -8,11 +8,13 @@
 
 int		assembler(char *name)
 {
-	t_list		*list;
-	header_t	header;
+	t_data		*list;
+	// header_t	header;
 
+	list = NULL;
 	read_data(&list, name);
-	validate_header(list, header);
+	print_list(list);
+	// validate_header(list, header);
 	//проверить валидность листа, создать файл и записывать все в него;
-	return (1);
+	return (0);
 }

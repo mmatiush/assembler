@@ -1,18 +1,18 @@
 #include "libft.h"
 #include "op.h"
+#include "asm.h"
 
-int		check_argument_extension(const char *name)
+static int	check_argument_extension(const char *name)
 {
 	int		len;
 
 	len = ft_strlen(name);
-	if (len > 2)
-		if (name[len - 1] != 's' || name[len - 2] != '.')
+	if (len < 3 || name[len - 1] != 's' || name[len - 2] != '.')
 			return (1);
 	return (0);
 }
 
-int		main(int ac, char *av[])
+int			main(int ac, char *av[])
 {
 	if (ac != 2)
 		return (print_error(0));
