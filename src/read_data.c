@@ -23,12 +23,8 @@ static void		remove_comments(char *str, int *quotations)
 		while(*str != EOL)
 		{
 			if (*str == DBL_QUOTATION_CHAR)
-			{
 				(*quotations)++;
-				str++;
-				continue ;
-			}
-			if (*str == COMMENT_CHAR && *quotations % 2 != OPEN)
+			else if (*str == COMMENT_CHAR && (*quotations % 2) != OPEN)
 			{
 				null_rest_of_string(str);
 				return ;
@@ -62,7 +58,9 @@ void			read_data(t_data **list, const char *name)
 		remove_comments(buff, &quotations);
 		if(quotations > 4)
 			exit (print_error_line(3, line_num));
-		if (buff != NULL && buff[0] != EOL)
+		if(buff != NULL && buff[0] != EOL && quotations % 2 == OPEN)
+			add_to_list(list, ft_strjoin(buff, "\n"), line_num);
+		else if (buff != NULL && buff[0] != EOL)
 			add_to_list(list, buff, line_num);
 		else
 		{

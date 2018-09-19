@@ -9,12 +9,12 @@
 int		assembler(char *name)
 {
 	t_data		*list;
-	// header_t	header;
+	header_t	header;
 
 	list = NULL;
 	read_data(&list, name);
-	print_list(list);
-	// validate_header(list, header);
+	// print_list(list);
+	validate_header(list, &header);
 	//проверить валидность листа, создать файл и записывать все в него;
 	return (0);
 }

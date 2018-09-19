@@ -24,5 +24,7 @@ void	free_list(t_data **list);
 
 void	print_list(t_data *list);
 
+void	validate_header(t_data *list, header_t *header);
+
 
 #endif

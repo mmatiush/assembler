@@ -38,7 +38,9 @@
             "includePath": [
                 "/usr/include",
                 "/usr/local/include",
-                "${workspaceFolder}"
+                "${workspaceFolder}",
+                "${workspaceFolder}/libft/inc",
+                "${workspaceFolder}/inc"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",
@@ -74,5 +76,5 @@
             }
         }
     ],
-    "version": 3
+    "version": 4
 }
