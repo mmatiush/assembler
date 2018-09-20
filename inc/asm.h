@@ -3,8 +3,14 @@
 
 # define EMPTY		0
 # define EOL		'\0'
+# define TRUE		1
+# define FALSE		0
+
 # define CLOSED 	0
 # define OPEN		1
+
+typedef int			bool_t;
+typedef struct		header_s header_t;
 
 typedef struct		s_data
 {
@@ -24,7 +30,7 @@ void	free_list(t_data **list);
 
 void	print_list(t_data *list);
 
-void	validate_header(t_data *list, header_t *header);
+t_data*	validate_header(t_data *ilist, header_t *header);
 
 
 #endif

@@ -7,8 +7,10 @@ static char *error_text[] =
 	"Wrong file extension\n\tUsage: ./asm <filenme.s>",
 	"Failed file opening",
 	"Extra [ \" ]",
-	"Couldn't allocate memory for a new node in the add_to_list() function", // 4
-	""
+	"Couldn't allocate memory",
+	"Syntax error",
+	"Missing .name",
+	"Missing .comment", //7
 };
 
 int		print_error(const int error_num)
