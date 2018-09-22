@@ -9,14 +9,16 @@
 int		assembler(char *name)
 {
 	t_data		*list;
-	t_data		*head;
-	header_t	header;
-
+	// t_data		*head;
+	// header_t	header;
+// 
 	list = NULL;
 	read_data(&list, name);
-	head = list;
+	free_list(&list);
+	// head = list;
 	print_list(list);
-	list = validate_header(&list, &header);
+	// list = validate_header(&list, &header);
 	//проверить валидность листа, создать файл и записывать все в него;
+	system ("leaks asm");
 	return (0);
 }

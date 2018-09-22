@@ -24,7 +24,7 @@ static void		remove_comments(char *str, int *quotations)
 		{
 			if (*str == DBL_QUOTATION_CHAR)
 				(*quotations)++;
-			else if (*str == COMMENT_CHAR && (*quotations % 2) != OPEN)
+			else if ((*str == COMMENT_CHAR || *str == ';') && (*quotations % 2) != OPEN)
 			{
 				null_rest_of_string(str);
 				return ;
@@ -36,10 +36,23 @@ static void		remove_comments(char *str, int *quotations)
 
 /*
 ** Reads data from the file while removing all comments
-** starting with the COMMENT_CHAR.
+** starting with the COMMENT_CHAR or ';'.
 ** Quotations can be either open or closed.
 ** If they are open, the function will add '\n' to the end of each line
 */
+
+int				ft_strisempty(char *str)
+{
+	if(!str)
+		return (1);
+	while(*str)
+	{
+		if (*str != ' ' && *str != '\t')
+			return (0);
+		str++;
+	}
+	return (1);
+}
 
 void			read_data(t_data **list, const char *name)
 {
@@ -61,13 +74,11 @@ void			read_data(t_data **list, const char *name)
 			exit (print_error_line(3, line_num));
 		if(buff != NULL && buff[0] != EOL && quotations % 2 == OPEN)
 			add_to_list(list, ft_strjoin(buff, "\n"), line_num);
-		else if (buff != NULL && buff[0] != EOL)
+		else if (buff != NULL && buff[0] != EOL && !ft_strisempty(buff))
 		{
 			add_to_list(list, buff, line_num);
 			continue ;
 		}
-		else
-			add_to_list(list, "\n", line_num);
 		free(buff);
 	}
 }

@@ -25,7 +25,7 @@ static size_t	ft_strtrimlen(const char *s)
 		res++;
 	}
 	if (s[i] == '\0')
-		return (0);
+		return (ft_strlen(s));
 	i = (ft_strlen(s) - 1);
 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 	{
@@ -47,7 +47,7 @@ char			*ft_strtrim(char const *s)
 	i = 0;
 	j = 0;
 	res_strlen = (ft_strlen(s) - ft_strtrimlen(s));
-	if (!((str = (char*)malloc(sizeof(*str) * (res_strlen + 1)))))
+	if (!(str = (char*)malloc(sizeof(*str) * (res_strlen + 1))))
 		return (NULL);
 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 		i++;
