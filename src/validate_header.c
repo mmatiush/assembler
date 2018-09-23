@@ -1,6 +1,6 @@
-// #include "libft.h"
-// #include "op.h"
-// #include "asm.h"
+#include "libft.h"
+#include "op.h"
+#include "asm.h"
 
 // char		*ft_strtrim_start(char *str)
 // {
@@ -104,35 +104,44 @@
 // 	return(list);
 // }
 
-// // t_data*	validate_header(t_data *list, header_t *header)
-// // {
-// // 	bool_t	fl_name;
-// // 	bool_t	fl_comment;
+static int	get_arr_size()
+{
 
-// // 	fl_name == FALSE;
-// // 	fl_comment == FALSE;
-// // 	while(list && (fl_name == FALSE || fl_comment == FALSE))
-// // 	{
-// // 		list->data = ft_strtrim_start(list->data);
-// // 		if (!ft_strncmp(list->data, NAME_CMD_STRING, 5) && fl_name == FALSE)
-// // 		{
-// // 			list = read_CMD_string(list, header->prog_name);
-// // 			fl_name = TRUE;
-// // 		}
-// // 		else if (!ft_strncmp(list->data, COMMENT_CMD_STRING, 5) && fl_comment == FALSE)
-// // 		{
-// // 			list = read_CMD_string(list, header->comment);
-// // 			fl_comment = TRUE;
-// // 		}
-// // 		else if (check_if_line_empty(list->data))
-// // 			exit(print_error_line(5, list->line_num)); // дописать
-// // 		else
-// // 			exit(ft_printf("THIS SHOULD NEVER HAPPEN. VALIDATE_HEADER\n")); //  remove ME TODO:
-// // 		if (list)
-// // 			list = list->next;
-// // 	}
-// // 	if_name_comment_exist(fl_name, fl_comment);
-// // 	return (list);
-// // }
+}
+
+t_data*	validate_header(t_data *list, header_t *header)
+{
+	bool_t	fl_name;
+	bool_t	fl_comment;
+	char	*arr;
+	int		size;
+
+	fl_name == FALSE;
+	fl_comment == FALSE;
+	while(list && (fl_name == FALSE || fl_comment == FALSE))
+	{
+		arr = ft_strsplit(list->data, '"');
+		size = get_arr_size();
+		list->data = ft_strtrim_start(list->data);
+		if (!ft_strncmp(list->data, NAME_CMD_STRING, 5) && fl_name == FALSE)
+		{
+			list = read_CMD_string(list, header->prog_name);
+			fl_name = TRUE;
+		}
+		else if (!ft_strncmp(list->data, COMMENT_CMD_STRING, 5) && fl_comment == FALSE)
+		{
+			list = read_CMD_string(list, header->comment);
+			fl_comment = TRUE;
+		}
+		else if (check_if_line_empty(list->data))
+			exit(print_error_line(5, list->line_num)); // дописать
+		else
+			exit(ft_printf("THIS SHOULD NEVER HAPPEN. VALIDATE_HEADER\n")); //  remove ME TODO:
+		if (list)
+			list = list->next;
+	}
+	if_name_comment_exist(fl_name, fl_comment);
+	return (list);
+}
 
 // void	validate_header(t_data *list, header_s)

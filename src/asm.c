@@ -14,11 +14,11 @@ int		assembler(char *name)
 // 
 	list = NULL;
 	read_data(&list, name);
-	free_list(&list);
 	// head = list;
 	print_list(list);
+	free_list(&list);
 	// list = validate_header(&list, &header);
 	//проверить валидность листа, создать файл и записывать все в него;
-	system ("leaks asm");
+	// system ("leaks asm");
 	return (0);
 }

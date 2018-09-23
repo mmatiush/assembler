@@ -27,11 +27,17 @@ void	add_to_list(t_data **list, char *buff, const int line_num)
 
 void	free_list(t_data **list)
 {
-	if (*list != NULL)
-		free_list(&(*list)->next);
-	free((*list)->data);
-	free(*list);
-	*list = NULL;
+	t_data	*temp;
+
+	while(*list != NULL)
+	{
+		temp = *list;
+		*list = (*list)->next;
+		free(temp->data);
+		temp->data = NULL;
+		free(temp);
+		temp = NULL;
+	}
 }
 
 void	print_list(t_data *list)
