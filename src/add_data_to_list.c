@@ -2,7 +2,7 @@
 #include "op.h"
 #include "asm.h"
 
-void	add_to_list(t_data **list, char *buff, const int line_num)
+void	add_to_list(t_asm *a, char *buff, const int line_num)
 {
 	t_data		*temp;
 	t_data		*current_node;
@@ -12,12 +12,12 @@ void	add_to_list(t_data **list, char *buff, const int line_num)
 	temp->data = buff;
 	temp->line_num = line_num;
 	temp->next = NULL;
-	if (*list == NULL)
+	if (a->list == NULL)
 	{
-		*list = temp;
+		a->list = temp;
 		return ;
 	}
-	current_node = *list;
+	current_node = a->list;
 	while (current_node->next != NULL)
 	{
 		current_node = current_node->next;

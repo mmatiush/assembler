@@ -11,6 +11,8 @@ static char *error_text[] =
 	"Syntax error",
 	"Missing .name",
 	"Missing .comment", //7
+	"Program name is too long",
+	"Program comment is too long"
 };
 
 int		print_error(const int error_num)

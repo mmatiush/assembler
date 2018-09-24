@@ -9,6 +9,9 @@
 # define CLOSED 	0
 # define OPEN		1
 
+# define NAME		1
+# define CMNT		2
+
 typedef int			t_bool;
 typedef struct		s_header t_header;
 
@@ -30,13 +33,15 @@ int		assembler(char *name);
 int		print_error(const int error_num);
 int		print_error_line(const int error_num, const int line);
 
-void	read_data(t_data **list, const char *name);
-void	add_to_list(t_data **list, char *buff, const int line_num);
+void	read_data(t_asm *a, const char *name);
+void	add_to_list(t_asm *a, char *buff, const int line_num);
 void	free_list(t_data **list);
 
 void	print_list(t_data *list);
 
-t_data*	validate_header(t_data *ilist, t_header *header);
+void	validate_header(t_asm *a);
+
+int		ft_strisempty(char *str); // TODO: add to lib
 
 
 #endif

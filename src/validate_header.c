@@ -1,6 +1,6 @@
-// #include "libft.h"
-// #include "op.h"
-// #include "asm.h"
+#include "libft.h"
+#include "op.h"
+#include "asm.h"
 
 // char		*ft_strtrim_start(char *str)
 // {
@@ -40,109 +40,154 @@
 // 	return (str);
 // }
 
-// void		if_name_comment_exist(bool_t fl_name, bool_t fl_comment)
-// {
-// 	if (fl_name == FALSE)
-// 		exit(print_error(6));
-// 	if (fl_comment == FALSE)
-// 		exit(print_error(7));
-// }
+void		if_name_comment_exist(int flag)
+{
+	if (flag & NAME)
+		exit(print_error(6));
+	if (flag & CMNT)
+		exit(print_error(7));
+}
+
+static int	quotations_num(char *str)
+{
+	int i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (*str)
+	{
+		if (*str == '"')
+			i++;
+		str++;
+	}
+	return (i);
+}
 
 
-// t_data*		read_CMD_comment(t_data *list, header_t *header)
-// {
+char	*ft_strtrim_free(char *str) // TODO: add to lib
+{
+	char *temp;
+	
+	if (!str)
+		return (str);
+	temp = ft_strtrim(str);
+	free(str);
+	return (temp);
+}
 
-// }
+static void	add_prog_name_to_struct (char *dest, char *src, int *flag)
+{
+	int		i;
 
-// t_data*		read_CMD_name(t_data *list, header_t *header)
-// {
-// 	char	*str;
-// 	int		quotations;
-// 	int		i;
+	i = 0;
+	while (src[i])
+	{
+		if (i == PROG_NAME_LENGTH)
+			exit (print_error(8));
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	*flag = *flag | NAME;
+}
 
-// 	// i = 0;
-// 	// quotations = CLOSED;
-// 	// str = list->data + ft_strlen(NAME_CMD_STRING);
-// 	while(list)
-// 	{
-// 		while(str)
-// 		{
-			
-// 			// if (quotations == CLOSED)
-// 			// {
-// 			// 	if (*str == ' ' || *str == '\t')
-// 			// 		str++;
-// 			// 	else if (*str != ' ' && *str != '\t')
-// 			// 		exit();
-// 			// }
-// 			// else if (quotations == OPEN)
-// 			// {
-// 			// 	header->prog_name[i++] = *str;sd
-// 			// }
-// 			// str++;
-// 		}
-// 		list = list->next;
-// 		str = list->data;
-// 	}
-// 	return(list);
-// }
+static void	add_prog_comment_to_struct (char *dest, char *src, int *flag)
+{
+	int		i;
 
-// static int	quotations_num(char *str)
-// {
-// 	int i;
+	i = 0;
+	while (src[i])
+	{
+		if (i == COMMENT_LENGTH)
+			exit (print_error(9));
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	*flag = *flag | CMNT;
+}
 
-// 	if (!str)
-// 		return (0);
-// 	i = 0;
-// 	while (*str)
-// 	{
-// 		if (*str == '"')
-// 			i++;
-// 		str++;
-// 	}
-// 	return (i);
-// }
+void		read_cmd_str_from_several_lines(t_asm *a, char *dest, char *src, void (*f)(char *, char *, int *), int *flag)
+{
+	char	*temp;
+	char	*buff;
+	int		i;
+	int		quot_num;
+	char	**arr;
 
-// t_data*	validate_header(t_data *list, header_t *header)
-// {
-// 	bool_t	fl_name;
-// 	bool_t	fl_comment;
-// 	char	*arr;
-// 	int		col_num
+	i = 0;
+	temp = ft_strdup(src);
+	while((a->list = a->list->next))
+	{
+		quot_num = quotations_num(a->list->data);
+		if (quot_num == 0)
+		{
+			buff = ft_strjoin(temp, a->list->data);
+			free(temp);
+			temp = buff;
+		}
+		else if (quot_num == 1)
+		{
+			arr = ft_strsplit(a->list->data, '"');
+			if (arr[0] && ft_strisempty(arr[1]))
+			{
+				buff = ft_strjoin(temp, arr[0]);
+				free(temp);
+				temp = buff;
+			}
+			else
+				exit (print_error_line(5, a->list->line_num));
+			ft_free_str_arr(&arr);
+		}
+		else
+			exit (print_error_line(5, a->list->line_num));
+	}
+	f(dest, temp, flag);
+	free(temp);
+}
 
-// 	fl_name == FALSE;
-// 	fl_comment == FALSE;
-// 	while(list && (fl_name == FALSE || fl_comment == FALSE))
-// 	{
-// 		arr = ft_strsplit(list->data, '"');
-// 		arr[0] = ft_strtrim(arr[0]);
-// 		col_num = quotations_num;
-// 		if ((col_num == 1 || col_num == 2)
-// 		{
-// 			if (!ft_strcmp(arr[0], NAME_CMD_STRING) && fl_name == FALSE)
-// 				list = read_CMD_name(list, header->prog_name);
-// 			else if	(!ft_strcmp(arr[0], COMMENT_CMD_STRING) && fl_name == FALSE)
-// 				list = read_CMD_comment(list, header->comment);
-// 			else
 
-// 		}
-// 		// if (!ft_strncmp(list->data, NAME_CMD_STRING, 5) && fl_name == FALSE)
-// 		// {
-// 		// 	list = read_CMD_string(list, header->prog_name);
-// 		// 	fl_name = TRUE;
-// 		// }
-// 		// else if (!ft_strncmp(list->data, COMMENT_CMD_STRING, 5) && fl_comment == FALSE)
-// 		// {
-// 		// 	list = read_CMD_string(list, header->comment);
-// 		// 	fl_comment = TRUE;
-// 		// }
-// 		// else if (check_if_line_empty(list->data))
-// 		// 	exit(print_error_line(5, list->line_num)); // дописать
-// 		// else
-// 		// 	exit(ft_printf("THIS SHOULD NEVER HAPPEN. VALIDATE_HEADER\n")); //  remove ME TODO:
-// 		if (list)
-// 			list = list->next;
-// 	}
-// 	if_name_comment_exist(fl_name, fl_comment);
-// 	return (list);
-// }
+static void	read_header_string(t_asm *a, char **arr, int *flag, int quot_num)
+{
+	if (quot_num == 2)
+	{
+		if (!ft_strcmp(arr[0], NAME_CMD_STRING) && *flag != NAME && arr[1] && ft_strisempty(arr[2]))
+			add_prog_name_to_struct(a->header->prog_name, arr[1], flag);
+		else if (!ft_strcmp(arr[0], COMMENT_CMD_STRING) && *flag != CMNT && arr[1] && ft_strisempty(arr[2]))
+			add_prog_comment_to_struct(a->header->comment, arr[1], flag);
+		else
+			exit(print_error_line(5, a->list->line_num));
+	}
+	else if (quot_num == 1)
+	{
+		if (!ft_strcmp(arr[0], NAME_CMD_STRING) && *flag != NAME)
+			read_cmd_str_from_several_lines(a, a->header->prog_name, arr[1], &add_prog_name_to_struct, flag);
+		else if (!ft_strcmp(arr[0], COMMENT_CMD_STRING) && *flag != CMNT)
+			read_cmd_str_from_several_lines(a, a->header->comment, arr[1], &add_prog_comment_to_struct, flag);
+		else
+			exit(print_error_line(5, a->list->line_num));
+	}
+}
+
+void	validate_header(t_asm *a)
+{
+	int		flag;
+	char	**arr;
+	int		quot_num;
+
+	flag = EMPTY;
+	while(a->list && (!(flag & NAME) || !(flag & CMNT)))
+	{
+		arr = ft_strsplit(a->list->data, '"');
+		arr[0] = ft_strtrim_free(arr[0]);
+		quot_num = quotations_num(a->list->data);
+		if (quot_num == 2 || quot_num == 1)
+			read_header_string(a, arr, &flag, quot_num);
+		else
+			exit (print_error_line(5, a->list->line_num));
+		ft_free_str_arr(&arr);
+		a->list = a->list->next;
+	}
+	if_name_comment_exist(flag);
+}

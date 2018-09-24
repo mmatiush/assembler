@@ -54,7 +54,7 @@ int				ft_strisempty(char *str)
 	return (1);
 }
 
-void			read_data(t_data **list, const char *name)
+void			read_data(t_asm *a, const char *name)
 {
 	int			line_num;
 	char		*buff;
@@ -73,10 +73,10 @@ void			read_data(t_data **list, const char *name)
 		if(quotations > 4)
 			exit (print_error_line(3, line_num));
 		if(buff != NULL && buff[0] != EOL && quotations % 2 == OPEN)
-			add_to_list(list, ft_strjoin(buff, "\n"), line_num);
+			add_to_list(a, ft_strjoin(buff, "\n"), line_num);
 		else if (buff != NULL && buff[0] != EOL && !ft_strisempty(buff))
 		{
-			add_to_list(list, buff, line_num);
+			add_to_list(a, buff, line_num);
 			continue ;
 		}
 		free(buff);

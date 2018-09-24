@@ -17,7 +17,7 @@ int	ft_free_str_arr(char ***str)
 	int	i;
 
 	i = 0;
-	if (!*str)
+	if (!str || !*str)
 		return (1);
 	while ((*str)[i])
 	{
