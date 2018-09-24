@@ -10,7 +10,7 @@ static void		null_rest_of_string(char *str)
 }
 
 /*
-** Removes COMMENT_CHARs and everything following it
+** Removes COMMENT_CHARs and ';' and everything following it
 ** but not in COMMENT_CMD_STRING that is separated by
 ** DBL_QUOTATION_CHAR
 */

@@ -19,5 +19,6 @@ int			main(int ac, char *av[])
 	if (check_argument_extension(av[1]))
 		return (print_error(1));
 	assembler(av[1]);
+	system ("leaks -quiet asm");
     return (0);
 }

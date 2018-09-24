@@ -8,15 +8,14 @@
 
 int		assembler(char *name)
 {
-	t_data		*list;
-	// t_data		*head;
-	// header_t	header;
-// 
-	list = NULL;
-	read_data(&list, name);
+	t_asm	a;
+	a.list = NULL;
+	a.header = NULL;
+
+	read_data(&a.list, name);
 	// head = list;
-	print_list(list);
-	free_list(&list);
+	print_list(a.list);
+	free_list(&a.list);
 	// list = validate_header(&list, &header);
 	//проверить валидность листа, создать файл и записывать все в него;
 	// system ("leaks asm");

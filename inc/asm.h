@@ -9,8 +9,8 @@
 # define CLOSED 	0
 # define OPEN		1
 
-typedef int			bool_t;
-typedef struct		header_s header_t;
+typedef int			t_bool;
+typedef struct		s_header t_header;
 
 typedef struct		s_data
 {
@@ -18,6 +18,12 @@ typedef struct		s_data
 	char			*data;
 	struct s_data	*next;			
 }					t_data;
+
+typedef struct		s_asm
+{
+	t_data			*list;
+	t_header		*header;
+}					t_asm;
 
 int		assembler(char *name);
 
@@ -30,7 +36,7 @@ void	free_list(t_data **list);
 
 void	print_list(t_data *list);
 
-t_data*	validate_header(t_data *ilist, header_t *header);
+t_data*	validate_header(t_data *ilist, t_header *header);
 
 
 #endif
