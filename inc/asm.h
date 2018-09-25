@@ -36,7 +36,6 @@ int		print_error_line(const int error_num, const int line);
 void	read_data(t_asm *a, const char *name);
 void	add_to_list(t_asm *a, char *buff, const int line_num);
 void	free_list(t_data **list);
-
 void	print_list(t_data *list);
 
 void	validate_header(t_asm *a);

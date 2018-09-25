@@ -72,9 +72,9 @@ void			read_data(t_asm *a, const char *name)
 		remove_comments(buff, &quotations);
 		if(quotations > 4)
 			exit (print_error_line(3, line_num));
-		if(buff != NULL && buff[0] != EOL && quotations % 2 == OPEN)
+		if(quotations % 2 == OPEN)
 			add_to_list(a, ft_strjoin(buff, "\n"), line_num);
-		else if (buff != NULL && buff[0] != EOL && !ft_strisempty(buff))
+		else if (!ft_strisempty(buff))
 		{
 			add_to_list(a, buff, line_num);
 			continue ;
