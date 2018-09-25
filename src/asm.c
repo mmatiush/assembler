@@ -19,6 +19,7 @@ int		assembler(char *name)
 	validate_header(&a);
 	ft_printf("\n->[%s]<-\n", a.header->prog_name);
 	ft_printf("\n->[%s]<-\n\n", a.header->comment);
+	free(a.header);
 	free_list(&a.list);
 	//проверить валидность листа, создать файл и записывать все в него;
 	// system ("leaks asm");

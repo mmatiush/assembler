@@ -109,8 +109,29 @@ static void	add_prog_comment_to_struct (char *dest, char *src, int *flag)
 	dest[i] = '\0';
 	*flag = *flag | CMNT;
 }
+/*
+** Check if there is not extra characters after the 
+*/
+int			good_cmnt(char *str)
+{
+	if (ft_strisempty(ft_strrchr(str, '"') + 1))
+		return (1);
+	else
+		return (0);
+}
 
-void		read_cmd_str_from_several_lines(t_asm *a, char *dest, char *src, void (*f)(char *, char *, int *), int *flag)
+char	*get_cmd_beginning(char *str)
+{
+	char	**arr;
+	char	*temp;
+
+	arr = ft_strsplit(str, '"');
+	temp = ft_strdup(arr[1]);
+	ft_free_str_arr(&arr);
+	return (temp);
+}
+
+void		read_cmd_str_from_several_lines(t_asm *a, char *dest, void (*f)(char *, char *, int *), int *flag)
 {
 	char	*temp;
 	char	*buff;
@@ -119,7 +140,7 @@ void		read_cmd_str_from_several_lines(t_asm *a, char *dest, char *src, void (*f)
 	char	**arr;
 
 	i = 0;
-	temp = ft_strdup(src);
+	temp = get_cmd_beginning(a->list->data);
 	while((a->list = a->list->next))
 	{
 		quot_num = quotations_num(a->list->data);
@@ -131,26 +152,29 @@ void		read_cmd_str_from_several_lines(t_asm *a, char *dest, char *src, void (*f)
 		}
 		else if (quot_num == 1)
 		{
+			if (!good_cmnt(a->list->data))
+				exit (print_error_line(5, a->list->line_num));
 			arr = ft_strsplit(a->list->data, '"');
-			if (a->list->data[0] == '"' && a->list->data[1] == '\0')
-			{
-				ft_free_str_arr(&arr);
-				break ;
-			}
-			else if (a->list->data[0] == '"' && a->list->data[1] != '\0')
-			{
-				exit (print_error_line(5, a->list->line_num));
-			}
-			else if ((arr[0] && ft_strisempty(arr[1])))
-			{
-				buff = ft_strjoin(temp, arr[0]);
-				free(temp);
-				temp = buff;
-				ft_free_str_arr(&arr);
-				break ;
-			}
-			else
-				exit (print_error_line(5, a->list->line_num));
+			buff = ft_strjoin(temp, arr[0]);
+			free(temp);
+			temp = buff;
+			ft_free_str_arr(&arr);
+			break ;
+			// if (a->list->data[0] == '"' && a->list->data[1] == '\0')
+			// {
+			// 	ft_free_str_arr(&arr);
+			// 	break ;
+			// }
+			// else if ((arr[0] && ft_strisempty(arr[1])))
+			// {
+			// 	buff = ft_strjoin(temp, arr[0]);
+			// 	free(temp);
+			// 	temp = buff;
+			// 	ft_free_str_arr(&arr);
+			// 	break ;
+			// }
+			// else
+			// 	exit (print_error_line(5, a->list->line_num));
 		}
 		else
 			exit (print_error_line(5, a->list->line_num));
@@ -159,16 +183,6 @@ void		read_cmd_str_from_several_lines(t_asm *a, char *dest, char *src, void (*f)
 	free(temp);
 }
 
-/*
-** Check if there is not extra characters after the 
-*/
-int			good_cmnt(char *str)
-{
-	if (ft_strisempty(ft_strrchr(str, '"') + 1))
-		return (1);
-	else
-		return (0);
-}
 
 static void	read_header_string(t_asm *a, char **arr, int *flag, int quot_num)
 {
@@ -184,9 +198,9 @@ static void	read_header_string(t_asm *a, char **arr, int *flag, int quot_num)
 	else if (quot_num == 1)
 	{
 		if (!ft_strcmp(arr[0], NAME_CMD_STRING) && *flag != NAME)
-			read_cmd_str_from_several_lines(a, a->header->prog_name, arr[1], &add_prog_name_to_struct, flag);
+			read_cmd_str_from_several_lines(a, a->header->prog_name, &add_prog_name_to_struct, flag);
 		else if (!ft_strcmp(arr[0], COMMENT_CMD_STRING) && *flag != CMNT)
-			read_cmd_str_from_several_lines(a, a->header->comment, arr[1], &add_prog_comment_to_struct, flag);
+			read_cmd_str_from_several_lines(a, a->header->comment, &add_prog_comment_to_struct, flag);
 		else
 			exit(print_error_line(5, a->list->line_num));
 	}
