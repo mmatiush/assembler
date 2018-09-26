@@ -22,10 +22,20 @@ typedef struct		s_data
 	struct s_data	*next;			
 }					t_data;
 
+typedef struct		s_labels
+{
+	char			*name;
+	size_t			address;
+	int				byte;
+	struct s_labels	*next;
+}					t_labels;
+
 typedef struct		s_asm
 {
 	t_data			*list;
 	t_header		*header;
+	t_labels		*label;
+	int				labels_num;
 }					t_asm;
 
 int		assembler(char *name);
