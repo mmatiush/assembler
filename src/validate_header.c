@@ -135,11 +135,9 @@ void		read_cmd_str_from_several_lines(t_asm *a, char *dest, void (*f)(char *, ch
 {
 	char	*temp;
 	char	*buff;
-	int		i;
-	int		quot_num;
 	char	**arr;
+	int		quot_num;
 
-	i = 0;
 	temp = get_cmd_beginning(a->list->data);
 	while((a->list = a->list->next))
 	{
@@ -160,21 +158,6 @@ void		read_cmd_str_from_several_lines(t_asm *a, char *dest, void (*f)(char *, ch
 			temp = buff;
 			ft_free_str_arr(&arr);
 			break ;
-			// if (a->list->data[0] == '"' && a->list->data[1] == '\0')
-			// {
-			// 	ft_free_str_arr(&arr);
-			// 	break ;
-			// }
-			// else if ((arr[0] && ft_strisempty(arr[1])))
-			// {
-			// 	buff = ft_strjoin(temp, arr[0]);
-			// 	free(temp);
-			// 	temp = buff;
-			// 	ft_free_str_arr(&arr);
-			// 	break ;
-			// }
-			// else
-			// 	exit (print_error_line(5, a->list->line_num));
 		}
 		else
 			exit (print_error_line(5, a->list->line_num));
