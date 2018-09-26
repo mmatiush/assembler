@@ -9,18 +9,18 @@
 int		assembler(char *name)
 {
 	t_asm	a;
-	t_data	*head;
+	t_data	*list;
 	a.list = NULL;
 	a.header = (t_header*)malloc(sizeof(t_header));
 
 	read_data(&a, name);
-	head = a.list;
+	list = a.list;
 	print_list(a.list);
 	validate_header(&a);
 	ft_printf("\n->[%s]<-\n", a.header->prog_name);
 	ft_printf("\n->[%s]<-\n\n", a.header->comment);
 	free(a.header);
-	free_list(&a.list);
+	free_list(&list);
 	//проверить валидность листа, создать файл и записывать все в него;
 	// system ("leaks asm");
 	return (0);
