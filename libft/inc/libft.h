@@ -97,5 +97,7 @@ int					ft_isspace(int c);
 int					ft_intlen(int n);
 int					ft_free_str_arr(char ***str);
 int					ft_strisint(char *str);
+char				*ft_strtrim_free(char *str);
+
 
 #endif

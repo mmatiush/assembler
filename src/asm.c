@@ -15,11 +15,12 @@ int		assembler(char *name)
 
 	read_data(&a, name);
 	list = a.list;
-	// print_list(a.list);
 	validate_header(&a);
-	// ft_printf("\n->[%s]<-\n", a.header->prog_name);
-	// ft_printf("\n->[%s]<-\n\n", a.header->comment);
-	validate_assembly(&a);
+	trim_remaining_list_strings(a.list);
+	print_list(a.list);
+	ft_printf("\n->[%s]<-\n", a.header->prog_name);
+	ft_printf("\n->[%s]<-\n\n", a.header->comment);
+	// validate_assembly(&a);
 	free(a.header);
 	free_list(&list);
 	//проверить валидность листа, создать файл и записывать все в него;

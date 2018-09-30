@@ -56,3 +56,14 @@ char			*ft_strtrim(char const *s)
 	str[j] = '\0';
 	return (str);
 }
+
+char			*ft_strtrim_free(char *str)
+{
+	char	*temp;
+
+	if (!str)
+		return (str);
+	temp = ft_strtrim(str);
+	free(str);
+	return (temp);
+}

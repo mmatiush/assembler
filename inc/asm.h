@@ -50,7 +50,10 @@ void	print_list(t_data *list);
 
 void	validate_header(t_asm *a);
 
-int		ft_strisempty(char *str); // TODO: add to lib
+int		ft_strisempty(char *str);
+
+void	trim_remaining_list_strings(t_data *list);
+
 
 
 #endif

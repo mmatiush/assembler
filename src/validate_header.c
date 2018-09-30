@@ -66,18 +66,6 @@ static int	quotations_num(char *str)
 	return (i);
 }
 
-
-char	*ft_strtrim_free(char *str) // TODO: add to lib
-{
-	char *temp;
-	
-	if (!str)
-		return (str);
-	temp = ft_strtrim(str);
-	free(str);
-	return (temp);
-}
-
 static void	add_prog_name_to_struct (char *dest, char *src, int *flag)
 {
 	int		i;
