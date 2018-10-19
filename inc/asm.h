@@ -12,21 +12,42 @@
 # define NAME		1
 # define CMNT		2
 
+t_op				g_op_tab[17];
+
+
 typedef int			t_bool;
 typedef struct		s_header t_header;
 
 typedef struct		s_data
 {
-	int				line_num;
 	char			*data;
+	int				line_num;
 	struct s_data	*next;			
 }					t_data;
+
+typedef struct		s_ops
+{
+	t_op			*op_ptr;
+	u_int32_t		codage;
+	u_int32_t		param[3];
+	u_int8_t		param_size[3];
+	// u_int32_t		par1;
+	// u_int8_t		par1_size;
+	// u_int32_t		par2;
+	// u_int8_t		par2_size;
+	// u_int32_t		par3;
+	// u_int8_t		par3_size;
+	u_int32_t		start_byte;
+	u_int32_t		end_byte;
+	struct s_ops	*next;
+}					t_ops;
 
 typedef struct		s_labels
 {
 	char			*name;
-	size_t			address;
-	int				byte;
+	u_int32_t		start_byte;
+	u_int32_t		end_byte;
+	t_ops			*ops;
 	struct s_labels	*next;
 }					t_labels;
 
@@ -34,8 +55,10 @@ typedef struct		s_asm
 {
 	t_data			*list;
 	t_header		*header;
-	t_labels		*label;
-	int				labels_num;
+	t_labels		*labels;
+	t_labels		*cur_label;
+	t_ops			*cur_op;
+	t_ops			*label_ref;
 }					t_asm;
 
 int		assembler(char *name);
@@ -57,3 +80,18 @@ void	trim_remaining_list_strings(t_data *list);
 
 
 #endif
+
+
+void	trim_op_params(char **arr)
+{
+	int		i;
+
+	i = 0;
+	if (arr == NULL)
+		return ;
+	while (arr[i])
+	{
+		arr[i] = ft_strtrim_free(arr[i]);
+		i++;
+	}
+}

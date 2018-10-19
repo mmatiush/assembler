@@ -12,7 +12,7 @@ LIBFT := 		$(LIBFT_DIR)libft.a
 
 # Source and object files
 SRC		:= asm.c op.c main.c read_data.c add_data_to_list.c error_handling.c validate_header.c trim_remaining_list_strings.c \
-		validate_ops.c
+		# validate_ops.c
 OBJ		:= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 # Header files
@@ -54,6 +54,9 @@ fclean:
 
 # Re-make all files
 re: fclean all
+
+run: all
+	./asm zork.s
 
 # GNU will run even if files have names as instructions
 .PHONY: all clean fclean re

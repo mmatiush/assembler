@@ -60,7 +60,7 @@ typedef char	t_arg_type;
 
 typedef struct      s_op
 {
-    char            name[5];
+    char            *name;
     int             nb_params;
 	t_arg_type		param[MAX_ARGS_NUMBER];
 	int				op_code;

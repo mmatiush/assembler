@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatiush <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:55:44 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/01/02 16:41:39 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/18 21:03:02 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int					ft_intlen(int n);
 int					ft_free_str_arr(char ***str);
 int					ft_strisint(char *str);
 char				*ft_strtrim_free(char *str);
+char				*ft_strndup(const char *s, size_t len);
 
 
 #endif

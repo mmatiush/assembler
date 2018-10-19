@@ -12,7 +12,11 @@ static char *error_text[] =
 	"Missing .name",
 	"Missing .comment", //7
 	"Program name is too long",
-	"Program comment is too long"
+	"Program comment is too long",
+	"Wrong parameters", // 10
+	"Couldn't allocate memory", // 11
+	"Wrong number of the operation params",
+	""
 };
 
 int		print_error(const int error_num)
