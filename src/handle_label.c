@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 21:01:14 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/19 17:07:50 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/20 18:11:58 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	add_empty_start_label(t_asm *a)
 		exit(print_error(11));
 	temp->name = NULL;
 	temp->next = NULL;
+	temp->ops = NULL;
 	temp->start_byte = 0;
 	temp->end_byte = 0;
 
@@ -43,6 +44,8 @@ void	add_label(t_asm *a, char *data, size_t i)
 
 	temp->name = ft_strndup(data, i);
 	temp->next = NULL;
+	temp->ops = NULL;
+
 	if (a->cur_label->start_byte != a->cur_label->end_byte)
 	{
 		temp->start_byte = a->cur_label->end_byte + 1;

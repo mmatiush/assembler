@@ -1,5 +1,6 @@
 #ifndef ASM_H
 # define ASM_H
+# include "op.h"
 
 # define EMPTY		0
 # define EOL		'\0'
@@ -14,9 +15,7 @@
 
 t_op				g_op_tab[17];
 
-
 typedef int			t_bool;
-typedef struct		s_header t_header;
 
 typedef struct		s_data
 {
@@ -29,14 +28,8 @@ typedef struct		s_ops
 {
 	t_op			*op_ptr;
 	u_int32_t		codage;
-	u_int32_t		param[3];
-	u_int8_t		param_size[3];
-	// u_int32_t		par1;
-	// u_int8_t		par1_size;
-	// u_int32_t		par2;
-	// u_int8_t		par2_size;
-	// u_int32_t		par3;
-	// u_int8_t		par3_size;
+	u_int32_t		param[NEW_MAX_OP_ARGS_NUMBER];
+	u_int8_t		param_size[NEW_MAX_OP_ARGS_NUMBER];
 	u_int32_t		start_byte;
 	u_int32_t		end_byte;
 	struct s_ops	*next;
@@ -77,21 +70,30 @@ int		ft_strisempty(char *str);
 
 void	trim_remaining_list_strings(t_data *list);
 
+void	validate_instructions(t_asm *a);
+
+
+/*
+** Label handling
+*/
+
+void	add_empty_start_label(t_asm *a);
+void	add_label(t_asm *a, char *data, size_t i);
+
+/*
+** Instruction handling
+*/
+
+char	*handle_op_and_return_first_param(t_asm *a, char *data);
+void	add_op(t_asm *a, t_op *op_ptr);
+size_t	get_op_size(t_ops *op);
+
+
+/*
+** Instruction params handling
+*/
+
+void	handle_op_param(t_asm *a, char *op_name, size_t param_index);
 
 
 #endif
-
-
-void	trim_op_params(char **arr)
-{
-	int		i;
-
-	i = 0;
-	if (arr == NULL)
-		return ;
-	while (arr[i])
-	{
-		arr[i] = ft_strtrim_free(arr[i]);
-		i++;
-	}
-}

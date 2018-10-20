@@ -12,6 +12,7 @@
 # define IND_CODE				3
 
 #define MAX_OP_ARGS_NUMBER		4
+#define NEW_MAX_OP_ARGS_NUMBER	3
 
 #define MAX_ARGS_NUMBER			4
 #define MAX_PLAYERS				4
@@ -62,7 +63,7 @@ typedef struct      s_op
 {
     char            *name;
     int             nb_params;
-	t_arg_type		param[MAX_ARGS_NUMBER];
+	t_arg_type		param[NEW_MAX_OP_ARGS_NUMBER];
 	int				op_code;
 	int				codage;
 	int				label_size;

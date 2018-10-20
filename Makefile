@@ -11,8 +11,10 @@ LIBFT_INC :=	./libft/inc/
 LIBFT := 		$(LIBFT_DIR)libft.a
 
 # Source and object files
-SRC		:= asm.c op.c main.c read_data.c add_data_to_list.c error_handling.c validate_header.c trim_remaining_list_strings.c \
-		# validate_ops.c
+SRC		:= asm.c op.c main.c read_data.c add_data_to_list.c error_handling.c \
+		trim_remaining_list_strings.c validate_header.c validate_instructions.c \
+		handle_label.c handle_ops.c handle_op_params.c
+
 OBJ		:= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 # Header files

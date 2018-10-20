@@ -3,7 +3,7 @@
 
 l2:
 
-	sti r1 , %:l2    , %-2
+	sti r1, %:l2, %-2
 	and r1, %0, r1
 
 live:

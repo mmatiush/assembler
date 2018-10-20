@@ -13,6 +13,7 @@ int		assembler(char *name)
 	
 	a.cur_op = NULL;
 	a.cur_label = NULL;
+	a.labels = NULL;
 	a.list = NULL;
 	a.header = (t_header*)malloc(sizeof(t_header));
 
@@ -24,7 +25,8 @@ int		assembler(char *name)
 	print_list(a.list);
 	ft_printf("\n->[%s]<-\n", a.header->prog_name);
 	ft_printf("\n->[%s]<-\n\n", a.header->comment);
-	// validate_assembly(&a);
+	validate_instructions(&a);
+
 	free(a.header);
 	free_list(&list_to_free);
 	//проверить валидность листа, создать файл и записывать все в него;

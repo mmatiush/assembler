@@ -3,19 +3,21 @@
 
 static char *error_text[] =
 {
-	"Wrong number of parameters\n\tUsage: ./asm <filenme.s>",
+	"Wrong number of parameters\n\tUsage: ./asm <filenme.s>", // 0
 	"Wrong file extension\n\tUsage: ./asm <filenme.s>",
 	"Failed file opening",
-	"Extra [ \" ]",
+	"Extra [ \" ]", // 3
 	"Couldn't allocate memory",
-	"Syntax error",
+	"Syntax error", // 5
 	"Missing .name",
-	"Missing .comment", //7
+	"Missing .comment", // 7
 	"Program name is too long",
 	"Program comment is too long",
 	"Wrong parameters", // 10
 	"Couldn't allocate memory", // 11
 	"Wrong number of the operation params",
+	"Operation syntax error", // 13
+	"Invaldi instruction", // 14
 	""
 };
 
