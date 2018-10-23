@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:55:44 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/18 21:03:02 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/23 15:32:22 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_ischrctr(int c);
 size_t				ft_strwdnb(const char *s);
 int					ft_isspace(int c);
-int					ft_intlen(int n);
+size_t				ft_intlen(int n);
 int					ft_free_str_arr(char ***str);
 int					ft_strisint(char *str);
 char				*ft_strtrim_free(char *str);

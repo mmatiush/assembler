@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 21:01:06 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/20 19:43:31 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/23 18:34:12 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 #include "op.h"
 #include "asm.h"
 
+/*
+** Initial i
+*/
+
 size_t			get_op_size(t_ops *op)
 {
-	int i;
-
-	i = 0;
-	if (!op)
-		return (0);
+	int		i;
 	size_t	size;
 
-	size = 0;
+	if (!op)
+		return (0);
+	size = 1;
 	if (op->codage)
 		size += 1;
+	i = 0;
 	while (i < NEW_MAX_OP_ARGS_NUMBER)
 	{
 		size += op->param_size[i];
@@ -62,9 +65,10 @@ void			add_op(t_asm *a, t_op *op_ptr)
 	if (a->cur_label->ops == NULL)
 	{
 		temp->start_byte = a->cur_label->start_byte;
+		// temp->start_byte = a->cur_label->end_byte;
 		a->cur_label->ops = temp;
 		a->cur_op = temp;
-		temp->end_byte = temp->start_byte; // TODO:
+		// temp->end_byte = temp->start_byte; // TODO:
 	}
 	else
 	{
@@ -72,8 +76,9 @@ void			add_op(t_asm *a, t_op *op_ptr)
 		while(a->cur_op->next != NULL)
 			a->cur_op = a->cur_op->next;
 	
-		temp->start_byte = a->cur_op->end_byte + 1;
-		temp->end_byte = temp->start_byte; // TODO:
+		temp->start_byte = a->cur_label->end_byte + 1;
+		// temp->start_byte = a->cur_op->end_byte + 1;
+		// temp->end_byte = temp->start_byte; // TODO:
 
 		a->cur_op->next = temp;
 		a->cur_op = a->cur_op->next;

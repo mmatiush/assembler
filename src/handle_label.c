@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 21:01:14 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/20 18:11:58 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/23 17:45:25 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void	add_label(t_asm *a, char *data, size_t i)
 	}
 	
 	a->cur_label->next = temp;
+	a->cur_label = a->cur_label->next;
 }

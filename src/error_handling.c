@@ -15,9 +15,10 @@ static char *error_text[] =
 	"Program comment is too long",
 	"Wrong parameters", // 10
 	"Couldn't allocate memory", // 11
-	"Wrong number of the operation params",
+	"Lexical error",
 	"Operation syntax error", // 13
-	"Invaldi instruction", // 14
+	"Invalid instruction", // 14
+	"Wrond parameter type for the instruction",
 	""
 };
 
@@ -33,3 +34,9 @@ int		print_error_line(const int error_num, const int line)
 	return (-1);
 }
 
+int		print_err_line_param(const int error_num, const int line, char *name)
+{
+	ft_printf("Error:\nLine #%d, parameter #<%s> - %s\n", \
+			line, name, error_text[error_num]);
+	return (-1);
+}

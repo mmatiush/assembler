@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 17:25:43 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/20 19:39:15 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/23 18:17:32 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,54 +28,44 @@ static int	comma_num(char *str)
 	return (i);
 }
 
-static void		trim_op_params(char **arr)
+static void		trim_op_params(char **params_arr)
 {
 	int		i;
 
 	i = 0;
-	if (arr == NULL)
+	if (params_arr == NULL)
 		return ;
-	while (arr[i])
+	while (params_arr[i])
 	{
-		arr[i] = ft_strtrim_free(arr[i]);
+		params_arr[i] = ft_strtrim_free(params_arr[i]);
 		i++;
 	}
 }
 
-static void		check_params_num(t_asm *a, size_t param_num)
+static void		check_params_num(t_asm *a, size_t params_num)
 {
-	size_t i;
-
-	i = 0;
-
-	if (param_num > NEW_MAX_OP_ARGS_NUMBER)
+	if ((int)params_num != a->cur_op->op_ptr->nb_params)
 		exit(print_error_line(5, a->list->line_num));
-	while (i < param_num)
-	{
-		if (a->cur_op->op_ptr->param[i] == 0)
-			exit(print_error_line(12, a->list->line_num));
-		i++;
-	}
 }
+
+/*
+** The line is splitted by a SEPARATOR_CHAR. In the first element of the
+** array will be the instruction and its first parameter.
+*/
 
 static void		handle_line_without_label(t_asm *a, char *data)
 {
-	size_t	param_num;
-	size_t	i;
-	char	**arr;
+	size_t	params_num;
+	char	**params_arr;
 
-	param_num = comma_num(data) + 1;
-	arr = ft_strsplit(data, SEPARATOR_CHAR);
-	trim_op_params(arr);
-	arr[0] = handle_op_and_return_first_param(a, arr[0]);
-	arr[0] = ft_strtrim_free(arr[0]);
-	check_params_num(a, param_num);
-	i = 0;
-	while (i < param_num)
-	{
-		handle_op_param(a, arr[i], i);
-		i++;
-	}
+	params_num = comma_num(data) + 1;
+	if (!(params_arr = ft_strsplit(data, SEPARATOR_CHAR)))
+		exit(print_error_line(12, a->list->line_num));
+	trim_op_params(params_arr);
+	params_arr[0] = handle_op_and_return_first_param(a, params_arr[0]);
+	params_arr[0] = ft_strtrim_free(params_arr[0]);
+	check_params_num(a, params_num);
+	handle_op_params(a, params_arr, params_num);
 }
 
 static void		handle_full_line(t_asm *a, char *data)
@@ -116,8 +106,12 @@ void			validate_instructions(t_asm *a)
 		handle_full_line(a, a->list->data);
 		if (a->cur_op)
 		{
-			a->cur_op->end_byte = get_op_size(a->cur_op) - 1;
-			a->cur_label->end_byte = a->cur_op->end_byte;
+			// a->cur_op->end_byte = get_op_size(a->cur_op) - 1;
+			// a->cur_label->end_byte = a->cur_op->end_byte;
+			if (a->cur_label->end_byte == a->cur_label->start_byte)
+				a->cur_label->end_byte = a->cur_label->end_byte + get_op_size(a->cur_op) - 1;
+			else
+				a->cur_label->end_byte = a->cur_label->end_byte + get_op_size(a->cur_op);
 		}
 		a->list = a->list->next;
 	}

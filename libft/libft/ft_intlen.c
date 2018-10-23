@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatiush <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 14:38:39 by mmatiush          #+#    #+#             */
-/*   Updated: 2017/11/26 14:38:40 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/23 15:31:56 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 ** Returns the number of digits in int.
 */
 
-int		ft_intlen(int n)
+size_t		ft_intlen(int n)
 {
-	int i;
+	size_t i;
 
 	i = 1;
 	while (n /= 10)
