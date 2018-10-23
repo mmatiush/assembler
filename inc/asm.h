@@ -63,6 +63,7 @@ struct				s_lebel_ref
 	t_ops			*op;
 	u_int32_t		param_index;
 	char			*lable_name;
+	int				line_num;
 	t_label_ref		*next;
 };
 
@@ -98,6 +99,14 @@ int		ft_strisempty(char *str);
 void	trim_remaining_list_strings(t_data *list);
 
 void	validate_instructions(t_asm *a);
+
+/*
+** Label references handling
+*/
+
+void	fill_label_references(t_asm *a);
+void	free_label_refences(t_asm *a);
+void	print_lebel_ref(t_label_ref *ref);
 
 
 /*

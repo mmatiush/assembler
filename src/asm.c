@@ -62,7 +62,9 @@ int		assembler(char *name)
 	ft_printf("\n->[%s]<-\n\n", a.header->comment);
 	validate_instructions(&a);
 
+	fill_label_references(&a);
 	print_instructions(&a);
+	// print_lebel_ref(a.label_ref);
 	free_lables(a.labels);
 	free(a.header);
 	free_list(&list_to_free);

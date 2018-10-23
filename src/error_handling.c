@@ -18,8 +18,8 @@ static char *error_text[] =
 	"Lexical error",
 	"Operation syntax error", // 13
 	"Invalid instruction", // 14
-	"Wrond parameter type for the instruction",
-	""
+	"Invalid parameter for the instruction",
+	"Undefined reference to label"
 };
 
 int		print_error(const int error_num)
