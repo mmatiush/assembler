@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 21:01:06 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/23 18:34:12 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/24 17:05:42 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ char			*handle_op_and_return_first_param(t_asm *a, char *data)
 		if (!(ft_strcmp(g_op_tab[i].name, op_name)))
 		{
 			add_op(a, &g_op_tab[i]);
+			free(op_name);
 			return (param);
 		}
 		i++;
