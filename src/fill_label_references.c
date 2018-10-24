@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 19:06:22 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/23 20:32:45 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/24 17:28:25 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void		free_label_refences(t_asm *a)
 	{
 		ref = a->label_ref;
 		a->label_ref = a->label_ref->next;
+		free(ref->lable_name);
 		free(ref);
 	}
 }
