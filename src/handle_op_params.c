@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:01:13 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/24 17:27:06 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/24 20:35:08 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		add_label_reference(t_asm *a, char *label_name, size_t index)
 	t_label_ref *head;
 
 	if (!(temp = malloc(sizeof(t_label_ref))))
-		exit(print_error(11));
+		exit(print_error(4));
 
 	temp->lable_name = ft_strdup(label_name);
 	temp->op = a->cur_op;

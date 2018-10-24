@@ -6,12 +6,11 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 17:25:43 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/23 18:17:32 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/24 20:58:17 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "op.h"
 #include "asm.h"
 
 static int	comma_num(char *str)
@@ -77,7 +76,7 @@ static void		handle_full_line(t_asm *a, char *data)
 	flag = 0;
 	while (data[i])
 	{
-		if (!ft_strchr(LABEL_CHARS, data[i])) // если попадаем на НЕ лейбл чар
+		if (!ft_strchr(LABEL_CHARS, data[i]))
 		{
 			if (data[i] == LABEL_CHAR)
 			{
@@ -106,8 +105,6 @@ void			validate_instructions(t_asm *a)
 		handle_full_line(a, a->list->data);
 		if (a->cur_op)
 		{
-			// a->cur_op->end_byte = get_op_size(a->cur_op) - 1;
-			// a->cur_label->end_byte = a->cur_op->end_byte;
 			if (a->cur_label->end_byte == a->cur_label->start_byte)
 				a->cur_label->end_byte = a->cur_label->end_byte + get_op_size(a->cur_op) - 1;
 			else

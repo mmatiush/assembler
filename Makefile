@@ -13,7 +13,8 @@ LIBFT := 		$(LIBFT_DIR)libft.a
 # Source and object files
 SRC		:= asm.c op.c main.c read_data.c add_data_to_list.c error_handling.c \
 		trim_remaining_list_strings.c validate_header.c validate_instructions.c \
-		handle_label.c handle_ops.c handle_op_params.c fill_label_references.c
+		handle_label.c handle_ops.c handle_op_params.c fill_label_references.c \
+		free_t_asm.c write_to_output_file.c
 
 OBJ		:= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

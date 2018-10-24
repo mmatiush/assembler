@@ -34,13 +34,6 @@ static void		remove_comments(char *str, int *quotations)
 	}
 }
 
-/*
-** Reads data from the file while removing all comments
-** starting with the COMMENT_CHAR or ';'.
-** Quotations can be either open or closed.
-** If they are open, the function will add '\n' to the end of each line
-*/
-
 int				ft_strisempty(char *str)
 {
 	if(!str)
@@ -53,6 +46,13 @@ int				ft_strisempty(char *str)
 	}
 	return (1);
 }
+
+/*
+** Reads data from the file while removing all comments
+** starting with the COMMENT_CHAR or ';'.
+** Quotations can be either open or closed.
+** If they are open, the function will add '\n' to the end of each line
+*/
 
 void			read_data(t_asm *a, const char *name)
 {
@@ -68,7 +68,7 @@ void			read_data(t_asm *a, const char *name)
 		exit (print_error(2));
 	while(get_next_line(fd, &buff) > 0)
 	{
-		line_num++;
+		++line_num;
 		remove_comments(buff, &quotations);
 		if(quotations > 4)
 			exit (print_error_line(3, line_num));
@@ -81,4 +81,5 @@ void			read_data(t_asm *a, const char *name)
 		}
 		free(buff);
 	}
+	a->list_head = a->list;
 }

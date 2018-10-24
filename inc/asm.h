@@ -70,6 +70,7 @@ struct				s_lebel_ref
 typedef struct		s_asm
 {
 	t_data			*list;
+	t_data			*list_head;
 	t_header		*header;
 	t_labels		*labels;
 	t_labels		*cur_label;
@@ -105,8 +106,6 @@ void	validate_instructions(t_asm *a);
 */
 
 void	fill_label_references(t_asm *a);
-void	free_label_refences(t_asm *a);
-void	print_lebel_ref(t_label_ref *ref);
 
 
 /*
@@ -131,5 +130,14 @@ size_t	get_op_size(t_ops *op);
 
 void	handle_op_params(t_asm *a, char **params_arr, size_t params_num);
 
+/*
+** Free t_asm
+*/
+
+void	free_t_asm(t_asm *a);
+void	free_labels(t_labels *label_ptr);
+void	free_label_refences(t_asm *a);
+
+void	write_to_output_file(t_asm *a, char *f_name);
 
 #endif

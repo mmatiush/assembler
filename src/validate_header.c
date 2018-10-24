@@ -2,46 +2,6 @@
 #include "op.h"
 #include "asm.h"
 
-/*
-char		*ft_strtrim_start(char *str)
-{
-	int		trim_len;
-	int		i;
-	char	*temp;
-
-	if (!str)
-		return (str);
-	trim_len = 0;
-	while(str[trim_len] == '\t' || str[trim_len] == ' ')
-		trim_len++;
-	if (!(temp = (char *)malloc(sizeof(char) * (ft_strlen(str) - trim_len + 1))))
-		exit(print_error(4));
-	i = 0;
-	while (str[trim_len])
-		temp[i++] = str[trim_len++];
-	temp[i] = '\0';
-	free(str);
-	return (temp);
-}
-
-char		*ft_strtrim_end(char *str)
-{
-	int		len;
-
-	if (!str)
-		return (str);
-	len = ft_strlen(str);
-	while (--len >= 0)
-	{
-		if (str[len] == '\t' || str[len] == ' ')
-			str[len] = '\0';
-		else
-			break ;
-	}
-	return (str);
-}
-*/
-
 void		if_name_comment_exist(int flag)
 {
 	if (!(flag & NAME))

@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 21:01:06 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/24 17:18:28 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/24 20:35:23 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,15 @@ void			add_op(t_asm *a, t_op *op_ptr)
 	t_ops		*temp;
 	
 	if (!(temp = malloc(sizeof(t_ops))))
-		exit(print_error(11));
+		exit(print_error(4));
 	
 	null_t_ops_struct(temp);
 	temp->op_ptr = op_ptr;
 	if (a->cur_label->ops == NULL)
 	{
 		temp->start_byte = a->cur_label->start_byte;
-		// temp->start_byte = a->cur_label->end_byte;
 		a->cur_label->ops = temp;
 		a->cur_op = temp;
-		// temp->end_byte = temp->start_byte; // TODO:
 	}
 	else
 	{
@@ -77,9 +75,6 @@ void			add_op(t_asm *a, t_op *op_ptr)
 			a->cur_op = a->cur_op->next;
 	
 		temp->start_byte = a->cur_label->end_byte + 1;
-		// temp->start_byte = a->cur_op->end_byte + 1;
-		// temp->end_byte = temp->start_byte; // TODO:
-
 		a->cur_op->next = temp;
 		a->cur_op = a->cur_op->next;
 	}

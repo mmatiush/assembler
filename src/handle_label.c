@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 21:01:14 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/23 17:45:25 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/24 20:58:13 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	add_empty_start_label(t_asm *a)
 	t_labels	*temp;
 
 	if (!(temp = malloc(sizeof(t_labels))))
-		exit(print_error(11));
+		exit(print_error(4));
 	temp->name = NULL;
 	temp->next = NULL;
 	temp->ops = NULL;
@@ -40,7 +40,7 @@ void	add_label(t_asm *a, char *data, size_t i)
 	t_labels	*temp;
 
 	if (!(temp = malloc(sizeof(t_labels))))
-		exit(print_error(11));
+		exit(print_error(4));
 
 	temp->name = ft_strndup(data, i);
 	temp->next = NULL;

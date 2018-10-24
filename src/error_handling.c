@@ -11,10 +11,10 @@ static char *error_text[] =
 	"Syntax error", // 5
 	"Missing .name",
 	"Missing .comment", // 7
-	"Program name is too long",
-	"Program comment is too long",
+	"Champion name too long (Max length 128)",
+	"Champion comment too long (Max length 2048)",
 	"Wrong parameters", // 10
-	"Couldn't allocate memory", // 11
+	"Failed file creating", // 11
 	"Lexical error",
 	"Operation syntax error", // 13
 	"Invalid instruction", // 14
