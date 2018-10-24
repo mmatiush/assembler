@@ -40,18 +40,18 @@ typedef struct		s_data
 typedef struct		s_ops
 {
 	t_op			*op_ptr;
-	u_int32_t		codage;
-	u_int32_t		param[NEW_MAX_OP_ARGS_NUMBER];
-	u_int8_t		param_size[NEW_MAX_OP_ARGS_NUMBER];
-	u_int32_t		start_byte;
+	uint32_t		codage;
+	uint32_t		param[NEW_MAX_OP_ARGS_NUMBER];
+	uint8_t			param_size[NEW_MAX_OP_ARGS_NUMBER];
+	uint32_t		start_byte;
 	struct s_ops	*next;
 }					t_ops;
 
 typedef struct		s_labels
 {
 	char			*name;
-	u_int32_t		start_byte;
-	u_int32_t		end_byte;
+	uint32_t		start_byte;
+	uint32_t		end_byte;
 	t_ops			*ops;
 	struct s_labels	*next;
 }					t_labels;
@@ -61,7 +61,7 @@ typedef struct		s_lebel_ref t_label_ref;
 struct				s_lebel_ref
 {
 	t_ops			*op;
-	u_int32_t		param_index;
+	uint32_t		param_index;
 	char			*lable_name;
 	int				line_num;
 	t_label_ref		*next;
