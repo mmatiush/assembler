@@ -16,7 +16,7 @@ void	print_instructions(t_asm *a)
 		ft_printf("\tL:<%s>\n", lbl->name);
 		while (op)
 		{
-			ft_printf("startByte<%u> endByte<%u> OPSTART<%u> Codage:<%0.8b> OP:<%s> Param:<%d><%d><%d>\n", lbl->start_byte, lbl->end_byte, op->start_byte, op->codage, op->op_ptr->name, op->param[0], op->param[1], op->param[2]);
+			ft_printf("startByte<%u> endByte<%u> OPSTART<%u> Codage:<%0.8d> OP:<%s> Param:<%d><%d><%d>\n", lbl->start_byte, lbl->end_byte, op->start_byte, op->codage, op->op_ptr->name, op->param[0], op->param[1], op->param[2]);
 			op = op->next;
 		}
 		lbl = lbl->next;
@@ -63,8 +63,8 @@ int		assembler(char *name)
 	validate_instructions(&a);
 
 	fill_label_references(&a);
-	print_instructions(&a);
-	// print_lebel_ref(a.label_ref);
+	// print_instructions(&a);
+	free_label_refences(&a);
 	free_lables(a.labels);
 	free(a.header);
 	free_list(&list_to_free);
