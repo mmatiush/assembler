@@ -16,27 +16,30 @@ void	print_instructions(t_asm *a)
 		ft_printf("\tL:<%s>\n", lbl->name);
 		while (op)
 		{
-			ft_printf("startByte<%u> endByte<%u> OPSTART<%u> Codage:<%0.8d> OP:<%s> Param:<%d><%d><%d>\n", lbl->start_byte, lbl->end_byte, op->start_byte, op->codage, op->op_ptr->name, op->param[0], op->param[1], op->param[2]);
+			ft_printf("startByte<%u> endByte<%u> OPSTART<%u> Codage:<%0.8b> OP:<%s> Param:<%d><%d><%d>\n", lbl->start_byte, lbl->end_byte, op->start_byte, op->codage, op->op_ptr->name, op->param[0], op->param[1], op->param[2]);
 			op = op->next;
 		}
 		lbl = lbl->next;
 	}
 }
 
-void	free_lables(t_labels *lable)
+void	free_labels(t_labels *label_ptr)
 {
-	t_ops	*op;
-	while(lable)
+	t_labels	*label;
+	t_ops		*op;
+
+	while(label_ptr)
 	{
-		free(lable->name);
-		while (lable->ops)
+		label = label_ptr;
+		free(label->name);
+		while (label->ops)
 		{
-			op = lable->ops;
-			lable->ops = lable->ops->next;
+			op = label->ops;
+			label->ops = label->ops->next;
 			free(op);
-			op = NULL;
 		}
-		lable = lable->next;
+		label_ptr = label_ptr->next;
+		free(label);
 	}
 }
 
@@ -63,9 +66,9 @@ int		assembler(char *name)
 	validate_instructions(&a);
 
 	fill_label_references(&a);
-	// print_instructions(&a);
+	print_instructions(&a);
 	free_label_refences(&a);
-	free_lables(a.labels);
+	free_labels(a.labels);
 	free(a.header);
 	free_list(&list_to_free);
 	//проверить валидность листа, создать файл и записывать все в него;
