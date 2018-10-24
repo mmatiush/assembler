@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   print_binary.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatiush <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 20:36:13 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/03/12 20:36:14 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/24 18:12:57 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include <stdio.h>
 /*
 ** Prints unsigned long int in binary.
 */
@@ -24,7 +24,11 @@ void	print_binary(t_flags *f)
 
 	value = get_unsigned_fl(f);
 	s = ft_lutoa_base(value, 2, 'a');
-	(value == 0 && f->f_prcsn) ? s = NULL : 0;
+	if (value == 0 && f->f_prcsn)
+	{
+		free(s);
+		s = NULL;
+	}
 	len = (ft_strlen(s) > f->prcsn) ? ft_strlen(s) : f->prcsn;
 	(f->f_prcsn) ? f->zero = 0 : 0;
 	if (!f->minus && !f->zero)
