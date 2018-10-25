@@ -6,13 +6,14 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:01:13 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/25 21:53:17 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/26 00:09:29 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "op.h"
 #include "asm.h"
+#include <stdbool.h>
 
 static void		add_codage(t_asm *a, size_t reg, size_t param_index)
 {
@@ -51,10 +52,24 @@ static void		add_label_reference(t_asm *a, char *label_name, size_t index)
 	head->next = temp;
 }
 
+
+bool			check_number_param(char *param)
+{
+	if (*param == '-' && ft_isdigit(*(param + 1)))
+		param++;
+	while (*param)
+	{
+		if (!ft_isdigit(*param))
+			return (true);
+		param++;
+	}
+	return (false);
+}
+
 static void		handle_T_IND(t_asm *a, char *param_name, size_t param_index)
 {
 	int		n;
-	char	*temp;
+	// char	*temp;
 	
 	if (!(a->cur_op->op_ptr->param[param_index] & T_IND))
 		exit(print_err_line_param(15, a->list->line_num, param_name));
@@ -63,10 +78,12 @@ static void		handle_T_IND(t_asm *a, char *param_name, size_t param_index)
 	else
 	{
 		n = ft_atoi(param_name);
-		temp = ft_itoa(n);
-		if (ft_strcmp(param_name, temp))
-			exit(print_err_line_param(15, a->list->line_num, param_name));
-		free(temp);
+		if (check_number_param(param_name))
+			exit(print_err_line_param(15, a->list->line_num, param_name - 1));
+		// temp = ft_itoa(n);
+		// if (ft_strcmp(param_name, temp))
+		// 	exit(print_err_line_param(15, a->list->line_num, param_name));
+		// free(temp);
 		a->cur_op->param[param_index] = (unsigned)n;
 	}
 
@@ -80,7 +97,7 @@ static void		handle_T_IND(t_asm *a, char *param_name, size_t param_index)
 static void		handle_T_DIR(t_asm *a, char *param_name, size_t param_index)
 {
 	int		n;
-	char	*temp;
+	// char	*temp;
 
 	if (!(a->cur_op->op_ptr->param[param_index] & T_DIR))
 		exit(print_err_line_param(15, a->list->line_num, param_name - 1));
@@ -89,10 +106,8 @@ static void		handle_T_DIR(t_asm *a, char *param_name, size_t param_index)
 	else
 	{
 		n = ft_atoi(param_name);
-		temp = ft_itoa(n);
-		if (ft_strcmp(param_name, temp))
+		if (check_number_param(param_name))
 			exit(print_err_line_param(15, a->list->line_num, param_name - 1));
-		free(temp);
 		a->cur_op->param[param_index] = (unsigned)n;
 	}
 	if (a->cur_op->op_ptr->codage)
@@ -127,6 +142,8 @@ static void		handle_one_param(t_asm *a, char *param_name, size_t param_index)
 		handle_T_REG(a, param_name + 1, param_index);
 	else if (param_name[0] == DIRECT_CHAR)
 		handle_T_DIR(a, param_name + 1, param_index);
+	else if (param_name[0] == LABEL_CHAR)
+		add_label_reference(a, param_name + 1, param_index);
 	else
 		handle_T_IND(a, param_name, param_index);
 }

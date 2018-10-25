@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 17:25:43 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/25 22:19:19 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/25 23:15:46 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void			validate_instructions(t_asm *a)
 			else
 				a->cur_label->end_byte = a->cur_label->end_byte + get_op_size(a->cur_op);
 		}
+
 		a->list = a->list->next;
 	}
 }

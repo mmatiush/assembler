@@ -36,7 +36,7 @@ int		print_error_line(const int error_num, const int line)
 
 int		print_err_line_param(const int error_num, const int line, char *name)
 {
-	ft_printf("Error:\nLine #%d, parameter #<%s> - %s\n", \
+	ft_printf("Error:\nLine #%d, parameter < %s > - %s\n", \
 			line, name, error_text[error_num]);
 	return (-1);
 }

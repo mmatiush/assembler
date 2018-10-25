@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 19:40:24 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/25 20:51:16 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/26 00:00:15 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char		*modify_file_name_ext(char *f_name)
 	*cor_name = '\0';
 	if (!(cor_name = ft_strjoin(f_name, ".cor")))
 		exit(print_error(4));
-	ft_printf("Writing to %s\n", cor_name);
+	ft_printf("Writing output program to %s\n", cor_name);
 	return (cor_name);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 21:01:14 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/25 22:16:19 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/25 23:05:32 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ void	add_label(t_asm *a, char *data, size_t i)
 	temp->next = NULL;
 	temp->ops = NULL;
 
-	// if (a->cur_label->start_byte != a->cur_label->end_byte)
-	// {
-	// 	temp->start_byte = a->cur_label->end_byte + 1;
-	// 	temp->end_byte = temp->start_byte;
-	// }
-	// else
-	// {
+	if (a->cur_label->start_byte != a->cur_label->end_byte)
+	{
+		temp->start_byte = a->cur_label->end_byte + 1;
+		temp->end_byte = temp->start_byte;
+	}
+	else
+	{
 		temp->start_byte = a->cur_label->end_byte;
 		temp->end_byte = temp->start_byte;
-	// }
+	}
 	
 	a->cur_label->next = temp;
 	a->cur_label = a->cur_label->next;
