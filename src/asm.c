@@ -41,9 +41,15 @@ static void	null_t_asm_struct(t_asm *a)
 	a->label_ref = NULL;
 }
 
-void static	write_prog_size(t_asm *a)
+// void			define_prog_size()
+// {
+// 	while ()
+// }
+
+static void		write_prog_size(t_asm *a)
 {
-	a->header->prog_size = a->cur_label->end_byte + 1;
+	// define_prog_size();
+	a->header->prog_size = a->cur_label->end_byte;
 }
 
 int			assembler(char *name)
@@ -53,10 +59,8 @@ int			assembler(char *name)
 	null_t_asm_struct(&a);
 
 	read_data(&a, name);
-	print_list(a.list);
 	validate_header(&a);
 	trim_remaining_list_strings(a.list);
-	ft_printf("\n");
 	print_list(a.list);
 	ft_printf("\n->[%s]<-\n", a.header->prog_name);
 	ft_printf("\n->[%s]<-\n\n", a.header->comment);

@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 19:06:22 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/24 19:05:17 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/25 19:20:54 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void			fill_label_references(t_asm *a)
 	{
 		label_start_byte = get_label_start(a, ref->lable_name, ref->line_num);
 		ref->op->param[ref->param_index] = label_start_byte - ref->op->start_byte;
+		// ft_printf("\n\nREFERENCE 0x%hx SIZE: %u \n\n", ref->op->param[ref->param_index], ref->op->param_size[ref->param_index]);
 		ref = ref->next;
 	}
 }

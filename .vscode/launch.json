@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/asm",
-            "args": ["zork.s"],
+            "args": ["bigzork.s"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

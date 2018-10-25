@@ -12,6 +12,7 @@ static int	check_argument_extension(const char *name)
 	return (0);
 }
 
+
 int			main(int ac, char *av[])
 {
 	if (ac != 2)
@@ -20,5 +21,6 @@ int			main(int ac, char *av[])
 		return (print_error(1));
 	assembler(av[1]);
 	system ("leaks -quiet asm");
+
     return (0);
 }

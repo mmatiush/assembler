@@ -4,19 +4,21 @@
 # include <stddef.h>
 # include <stdint.h>
 
-# define EMPTY		0
-# define EOL		'\0'
-# define TRUE		1
-# define FALSE		0
+# define EMPTY			0
+# define EOL			'\0'
+# define TRUE			1
+# define FALSE			0
+	
+# define CLOSED 		0
+# define OPEN			1
+	
+# define NAME			1
+# define CMNT			2
 
-# define CLOSED 	0
-# define OPEN		1
-
-# define NAME		1
-# define CMNT		2
-
-#define NEW_IND_SIZE	2
-#define NEW_REG_SIZE	1
+# define NEW_IND_SIZE	2
+# define NEW_REG_SIZE	1
+# define OP_CODE_SIZE	1
+# define CODAGE_SIZE	1
 
 #define NEW_MAX_OP_ARGS_NUMBER	3
 
@@ -25,7 +27,7 @@ typedef struct      s_op
     char            *name;
     int             nb_params;
 	t_arg_type		param[NEW_MAX_OP_ARGS_NUMBER];
-	int				op_code;
+	char			op_code;
 	int				codage;
 	int				label_size;
 }                   t_op;

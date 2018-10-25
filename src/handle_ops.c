@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 21:01:06 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/24 20:35:23 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/25 22:32:16 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ static void		null_t_ops_struct(t_ops *op)
 void			add_op(t_asm *a, t_op *op_ptr)
 {
 	t_ops		*temp;
-	
 	if (!(temp = malloc(sizeof(t_ops))))
 		exit(print_error(4));
-	
 	null_t_ops_struct(temp);
 	temp->op_ptr = op_ptr;
 	if (a->cur_label->ops == NULL)
 	{
+		// a->cur_label->start_byte = a->cur_label->start_byte + 1;
+		// a->cur_label->end_byte = a->cur_label->start_byte;
 		temp->start_byte = a->cur_label->start_byte;
 		a->cur_label->ops = temp;
 		a->cur_op = temp;

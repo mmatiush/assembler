@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:01:13 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/24 20:35:08 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/25 21:53:17 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void		handle_T_IND(t_asm *a, char *param_name, size_t param_index)
 	}
 
 	if (a->cur_op->op_ptr->codage)
-		add_codage(a, T_IND, param_index);
+		add_codage(a, IND_CODE, param_index);
 	
 	a->cur_op->param_size[param_index] = NEW_IND_SIZE;
 
@@ -96,7 +96,7 @@ static void		handle_T_DIR(t_asm *a, char *param_name, size_t param_index)
 		a->cur_op->param[param_index] = (unsigned)n;
 	}
 	if (a->cur_op->op_ptr->codage)
-		add_codage(a, T_DIR, param_index);
+		add_codage(a, DIR_CODE, param_index);
 
 	a->cur_op->param_size[param_index] = a->cur_op->op_ptr->label_size;
 }
@@ -116,7 +116,7 @@ static void		handle_T_REG(t_asm *a, char *param_name, size_t param_index)
 	a->cur_op->param[param_index] = n;
 	a->cur_op->param_size[param_index] = NEW_REG_SIZE;
 	if (a->cur_op->op_ptr->codage)
-		add_codage(a, T_REG, param_index);
+		add_codage(a, REG_CODE, param_index);
 }
 
 static void		handle_one_param(t_asm *a, char *param_name, size_t param_index)
