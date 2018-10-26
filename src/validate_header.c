@@ -110,6 +110,8 @@ void		read_cmd_str_from_several_lines(t_asm *a, char *dest, void (*f)(char *, ch
 		else
 			exit (print_error_line(5, a->list->line_num));
 	}
+	if (quot_num == 0)
+		exit(print_error(5));
 	f(dest, temp, flag);
 	free(temp);
 }

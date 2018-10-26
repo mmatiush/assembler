@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:01:13 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/26 00:09:29 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/26 15:08:00 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,6 @@ static void		handle_one_param(t_asm *a, char *param_name, size_t param_index)
 		handle_T_REG(a, param_name + 1, param_index);
 	else if (param_name[0] == DIRECT_CHAR)
 		handle_T_DIR(a, param_name + 1, param_index);
-	else if (param_name[0] == LABEL_CHAR)
-		add_label_reference(a, param_name + 1, param_index);
 	else
 		handle_T_IND(a, param_name, param_index);
 }

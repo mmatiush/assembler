@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/asm",
-            "args": ["leeloo.s"],
+            "args": ["Backward.s"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

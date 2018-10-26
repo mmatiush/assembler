@@ -19,7 +19,8 @@ static char *error_text[] =
 	"Operation syntax error", // 13
 	"Invalid instruction", // 14
 	"Invalid parameter for the instruction",
-	"Undefined reference to label"
+	"Undefined reference to label",
+	"Champion has no instructions" // 17
 };
 
 int		print_error(const int error_num)

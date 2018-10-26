@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 17:25:43 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/25 23:15:46 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/10/26 15:53:06 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,5 @@ void			validate_instructions(t_asm *a)
 
 		a->list = a->list->next;
 	}
+
 }

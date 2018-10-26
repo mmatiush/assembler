@@ -43,6 +43,8 @@ static void	null_t_asm_struct(t_asm *a)
 
 static void		write_prog_size(t_asm *a)
 {
+	if (!a->labels->next && !a->labels->ops)
+		exit(print_error(17));
 	if (a->cur_label->ops)
 		a->header->prog_size = a->cur_label->end_byte + 1;
 	else

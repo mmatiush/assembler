@@ -1,5 +1,8 @@
+.comment "se
+
+bc"
+
+
 .name    "sebc"
-.comment "sebc"
-.extend
 
-
+ld:
