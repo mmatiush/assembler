@@ -6,19 +6,19 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 18:27:45 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/24 18:41:56 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/11/01 18:59:36 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "libft.h"
 
-void		free_labels(t_labels *label_ptr)
+static void		free_labels(t_labels *label_ptr)
 {
 	t_labels	*label;
 	t_ops		*op;
 
-	while(label_ptr)
+	while (label_ptr)
 	{
 		label = label_ptr;
 		free(label->name);
@@ -33,7 +33,7 @@ void		free_labels(t_labels *label_ptr)
 	}
 }
 
-void		free_label_refences(t_asm *a)
+static void		free_label_refences(t_asm *a)
 {
 	t_label_ref *ref;
 
@@ -46,11 +46,10 @@ void		free_label_refences(t_asm *a)
 	}
 }
 
-void		free_t_asm(t_asm *a)
+void			free_t_asm(t_asm *a)
 {
 	free_labels(a->labels);
 	free_label_refences(a);
 	free(a->header);
 	free_list(&a->list_head);
 }
-

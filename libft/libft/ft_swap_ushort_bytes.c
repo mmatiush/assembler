@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_swap_ushort_bytes.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/01 18:34:19 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/11/01 18:34:47 by mmatiush         ###   ########.fr       */
+/*   Created: 2018/11/01 17:28:32 by mmatiush          #+#    #+#             */
+/*   Updated: 2018/11/01 19:05:19 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "op.h"
-#include "asm.h"
-
-static int	check_argument_extension(const char *name)
+unsigned short	ft_swap_ushort_bytes(unsigned short n)
 {
-	int		len;
+	unsigned short res;
 
-	len = ft_strlen(name);
-	if (len < 3 || name[len - 1] != 's' || name[len - 2] != '.')
-		return (1);
-	return (0);
-}
-
-int			main(int ac, char *av[])
-{
-	if (ac != 2)
-		return (print_error(0));
-	if (check_argument_extension(av[1]))
-		return (print_error(1));
-	assembler(av[1]);
-	return (0);
+	res = (n >> 8) | (n << 8);
+	return (res);
 }

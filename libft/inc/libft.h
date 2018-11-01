@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:55:44 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/23 15:32:22 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/11/01 19:19:22 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <inttypes.h>
 # include <limits.h>
+# include <stdbool.h>
+
 # define BUFF_SIZE 10
 # define FD_NUM 4864
 
@@ -84,6 +86,12 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+union				u_n
+{
+	uint32_t		i;
+	char			c[4];
+};
+
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -99,6 +107,9 @@ int					ft_free_str_arr(char ***str);
 int					ft_strisint(char *str);
 char				*ft_strtrim_free(char *str);
 char				*ft_strndup(const char *s, size_t len);
-
+unsigned short		ft_swap_ushort_bytes(unsigned short n);
+int					ft_swap_uint_bytes(unsigned n);
+bool				ft_is_big_endian(void);
+size_t				ft_occurnum(const char *str, const char c);
 
 #endif

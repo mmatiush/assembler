@@ -6,26 +6,12 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 17:25:43 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/26 15:53:06 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/11/01 19:21:07 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "asm.h"
-
-static int	comma_num(char *str)
-{
-	int i;
-
-	i = 0;
-	while (*str)
-	{
-		if (*str == ',')
-			i++;
-		str++;
-	}
-	return (i);
-}
 
 static void		trim_op_params(char **params_arr)
 {
@@ -57,7 +43,7 @@ static void		handle_line_without_label(t_asm *a, char *data)
 	size_t	params_num;
 	char	**params_arr;
 
-	params_num = comma_num(data) + 1;
+	params_num = ft_occurnum(data, SEPARATOR_CHAR) + 1;
 	if (!(params_arr = ft_strsplit(data, SEPARATOR_CHAR)))
 		exit(print_error_line(12, a->list->line_num));
 	trim_op_params(params_arr);
@@ -98,20 +84,19 @@ static void		handle_full_line(t_asm *a, char *data)
 void			validate_instructions(t_asm *a)
 {
 	add_empty_start_label(a);
-
-	while(a->list)
+	while (a->list)
 	{
 		a->cur_op = NULL;
 		handle_full_line(a, a->list->data);
 		if (a->cur_op)
 		{
 			if (a->cur_label->end_byte == a->cur_label->start_byte)
-				a->cur_label->end_byte = a->cur_label->end_byte + get_op_size(a->cur_op) - 1;
+				a->cur_label->end_byte = a->cur_label->end_byte + \
+				get_op_size(a->cur_op) - 1;
 			else
-				a->cur_label->end_byte = a->cur_label->end_byte + get_op_size(a->cur_op);
+				a->cur_label->end_byte = a->cur_label->end_byte + \
+				get_op_size(a->cur_op);
 		}
-
 		a->list = a->list->next;
 	}
-
 }

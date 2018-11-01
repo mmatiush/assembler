@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_data_to_list.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/01 18:36:08 by mmatiush          #+#    #+#             */
+/*   Updated: 2018/11/01 18:36:30 by mmatiush         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "op.h"
 #include "asm.h"
@@ -29,7 +41,7 @@ void	free_list(t_data **list)
 {
 	t_data	*temp;
 
-	while(*list != NULL)
+	while (*list != NULL)
 	{
 		temp = *list;
 		*list = (*list)->next;

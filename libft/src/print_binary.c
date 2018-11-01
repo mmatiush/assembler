@@ -6,12 +6,13 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 20:36:13 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/24 18:12:57 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/11/01 19:04:38 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+
 /*
 ** Prints unsigned long int in binary.
 */

@@ -3,6 +3,8 @@
 # include "op.h"
 # include <stddef.h>
 # include <stdint.h>
+# include <stdbool.h>
+
 
 # define EMPTY			0
 # define EOL			'\0'
@@ -104,11 +106,21 @@ void	trim_remaining_list_strings(t_data *list);
 void	validate_instructions(t_asm *a);
 
 /*
+** Read header utils
+*/
+
+void	if_name_comment_exist(int flag);
+int		quotations_num(char *str);
+int		good_cmnt(char *str);
+void	add_prog_name_to_struct (char *dest, char *src, int *flag);
+void	add_prog_comment_to_struct (char *dest, char *src, int *flag);
+
+/*
 ** Label references handling
 */
 
+void	add_label_reference(t_asm *a, char *label_name, size_t index);
 void	fill_label_references(t_asm *a);
-
 
 /*
 ** Label handling
@@ -131,15 +143,10 @@ size_t	get_op_size(t_ops *op);
 */
 
 void	handle_op_params(t_asm *a, char **params_arr, size_t params_num);
-
-/*
-** Free t_asm
-*/
+void	add_codage(t_asm *a, size_t reg, size_t param_index);
+bool	check_number_param(char *param);
 
 void	free_t_asm(t_asm *a);
-void	free_labels(t_labels *label_ptr);
-void	free_label_refences(t_asm *a);
-
 void	write_to_output_file(t_asm *a, char *f_name);
 
 #endif

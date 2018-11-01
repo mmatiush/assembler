@@ -6,57 +6,25 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 19:40:24 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/26 17:43:41 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/11/01 19:23:03 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "asm.h"
 #include <fcntl.h>
-#include <stdbool.h>
-
-union n {
-        uint32_t i;
-        char c[4];
-};
-
-bool	is_big_endian(void)
-{
- 
-	union n	num;
-	num.i = 0x01020304;
-    return (num.c[0] == 1); 
-}
-
-unsigned short	swap_ushort_bytes(unsigned short n)
-{
-	unsigned short res;
-	res  = (n >> 8) | (n << 8);
-	return (res);
-}
-
-int			swap_uint_bytes(unsigned n)
-{
-	unsigned res;
-
-	res =	((n>>24) & 0xff) |
-    		((n<<8) & 0xff0000) |
-            ((n>>8) & 0xff00) |
-            ((n<<24) & 0xff000000);
-	return (res);
-}
 
 void		write_header_to_output_file(t_header *header, int fd)
 {
 	char	*ptr;
-	size_t 	size;
+	size_t	size;
 	size_t	i;
-	if (!is_big_endian())
-	{
-		header->magic = swap_uint_bytes(header->magic);
-		header->prog_size = swap_uint_bytes(header->prog_size);
-	}
 
+	if (!ft_is_big_endian())
+	{
+		header->magic = ft_swap_uint_bytes(header->magic);
+		header->prog_size = ft_swap_uint_bytes(header->prog_size);
+	}
 	ptr = (char *)header;
 	size = sizeof(t_header);
 	i = 0;
@@ -71,7 +39,7 @@ char		*modify_file_name_ext(char *f_name)
 {
 	char	*cor_name;
 
-	cor_name = ft_strchr(f_name ,'.');
+	cor_name = ft_strrchr(f_name, '.');
 	*cor_name = '\0';
 	if (!(cor_name = ft_strjoin(f_name, ".cor")))
 		exit(print_error(4));
@@ -88,12 +56,12 @@ void		write_params_to_output_file(t_ops *op, int fd)
 	while (op->param_size[i] && i < NEW_MAX_OP_ARGS_NUMBER)
 	{
 		ptr = &op->param[i];
-		if (!is_big_endian())
+		if (!ft_is_big_endian())
 		{
 			if (op->param_size[i] == 2)
-				op->param[i] = swap_ushort_bytes((unsigned short)op->param[i]);
+				op->param[i] = ft_swap_ushort_bytes(op->param[i]);
 			if (op->param_size[i] == 4)
-				op->param[i] = swap_uint_bytes(op->param[i]);
+				op->param[i] = ft_swap_uint_bytes(op->param[i]);
 		}
 		write(fd, ptr, op->param_size[i]);
 		i++;

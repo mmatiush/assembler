@@ -6,14 +6,14 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 19:06:22 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/10/25 19:20:54 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/11/01 18:40:03 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "libft.h"
 
-static unsigned	get_label_start(t_asm *a , char *name, int const line_num)
+static unsigned	get_label_start(t_asm *a, char *name, int const line_num)
 {
 	t_labels *lable_ptr;
 
@@ -36,8 +36,8 @@ void			fill_label_references(t_asm *a)
 	while (ref)
 	{
 		label_start_byte = get_label_start(a, ref->lable_name, ref->line_num);
-		ref->op->param[ref->param_index] = label_start_byte - ref->op->start_byte;
-		// ft_printf("\n\nREFERENCE 0x%hx SIZE: %u \n\n", ref->op->param[ref->param_index], ref->op->param_size[ref->param_index]);
+		ref->op->param[ref->param_index] = label_start_byte - \
+											ref->op->start_byte;
 		ref = ref->next;
 	}
 }

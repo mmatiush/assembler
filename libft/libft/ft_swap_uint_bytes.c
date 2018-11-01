@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_swap_uint_bytes.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/01 18:34:19 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/11/01 18:34:47 by mmatiush         ###   ########.fr       */
+/*   Created: 2018/11/01 17:28:47 by mmatiush          #+#    #+#             */
+/*   Updated: 2018/11/01 19:06:18 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "op.h"
-#include "asm.h"
-
-static int	check_argument_extension(const char *name)
+int			ft_swap_uint_bytes(unsigned n)
 {
-	int		len;
+	unsigned res;
 
-	len = ft_strlen(name);
-	if (len < 3 || name[len - 1] != 's' || name[len - 2] != '.')
-		return (1);
-	return (0);
-}
-
-int			main(int ac, char *av[])
-{
-	if (ac != 2)
-		return (print_error(0));
-	if (check_argument_extension(av[1]))
-		return (print_error(1));
-	assembler(av[1]);
-	return (0);
+	res = ((n >> 24) & 0xff) |
+			((n << 8) & 0xff0000) |
+			((n >> 8) & 0xff00) |
+			((n << 24) & 0xff000000);
+	return (res);
 }

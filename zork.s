@@ -3,10 +3,10 @@
 
 
 
-	  .comment"I'M ALIIIIVE"
+	  .comment"I'M ALIIIIVE "  	
 
 
-l3:
-ld   %0a,r3
+	l3:
+ld   %0,r3
 
-l4:
+l41

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_occurnum.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/01 18:34:19 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/11/01 18:34:47 by mmatiush         ###   ########.fr       */
+/*   Created: 2018/11/01 19:17:01 by mmatiush          #+#    #+#             */
+/*   Updated: 2018/11/01 19:19:07 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "op.h"
-#include "asm.h"
 
-static int	check_argument_extension(const char *name)
+size_t		ft_occurnum(const char *str, const char c)
 {
-	int		len;
+	int i;
 
-	len = ft_strlen(name);
-	if (len < 3 || name[len - 1] != 's' || name[len - 2] != '.')
-		return (1);
-	return (0);
-}
-
-int			main(int ac, char *av[])
-{
-	if (ac != 2)
-		return (print_error(0));
-	if (check_argument_extension(av[1]))
-		return (print_error(1));
-	assembler(av[1]);
-	return (0);
+	if (!str || !c)
+		return (0);
+	i = 0;
+	while (*str)
+	{
+		if (*str == c)
+			i++;
+		str++;
+	}
+	return (i);
 }

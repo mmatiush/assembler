@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_is_big_endian.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/01 18:34:19 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/11/01 18:34:47 by mmatiush         ###   ########.fr       */
+/*   Created: 2018/11/01 17:56:39 by mmatiush          #+#    #+#             */
+/*   Updated: 2018/11/01 19:07:08 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "op.h"
-#include "asm.h"
 
-static int	check_argument_extension(const char *name)
+bool	ft_is_big_endian(void)
 {
-	int		len;
+	union u_n	num;
 
-	len = ft_strlen(name);
-	if (len < 3 || name[len - 1] != 's' || name[len - 2] != '.')
-		return (1);
-	return (0);
-}
-
-int			main(int ac, char *av[])
-{
-	if (ac != 2)
-		return (print_error(0));
-	if (check_argument_extension(av[1]))
-		return (print_error(1));
-	assembler(av[1]);
-	return (0);
+	num.i = 0x01020304;
+	return (num.c[0] == 1);
 }
