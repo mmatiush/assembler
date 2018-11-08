@@ -1,28 +1,30 @@
 clear
 echo "\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Starting checking XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n"
 
-sh test.sh 42
-sh test.sh Backward
-sh test.sh barriere
-sh test.sh Car
-sh test.sh Death
-sh test.sh ex
-sh test.sh Gagnant
-sh test.sh jumper
-sh test.sh lde
-sh test.sh leeloo
-sh test.sh leeloo
-sh test.sh mat
-sh test.sh maxidef
-sh test.sh mortel
-sh test.sh new
-sh test.sh Octobre_Rouge_V4.2
-sh test.sh sebc
-sh test.sh slider2
-sh test.sh Survivor
-sh test.sh tdc2
-sh test.sh tdc3
-sh test.sh tdc4
-sh test.sh Torpille
-sh test.sh toto
-sh test.sh zork
+sh test.sh vm_champs/champs/examples/42
+sh test.sh vm_champs/champs/examples/Backward
+sh test.sh vm_champs/champs/examples/barriere
+sh test.sh vm_champs/champs/examples/Car
+sh test.sh vm_champs/champs/examples/Death
+sh test.sh vm_champs/champs/examples/ex
+sh test.sh vm_champs/champs/examples/Gagnant
+sh test.sh vm_champs/champs/examples/jumper
+sh test.sh vm_champs/champs/examples/lde
+sh test.sh vm_champs/champs/examples/leeloo
+sh test.sh vm_champs/champs/examples/leeloo
+sh test.sh vm_champs/champs/examples/mat
+sh test.sh vm_champs/champs/examples/maxidef
+sh test.sh vm_champs/champs/examples/mortel
+sh test.sh vm_champs/champs/examples/new
+sh test.sh vm_champs/champs/examples/Octobre_Rouge_V4.2
+sh test.sh vm_champs/champs/examples/sebc
+sh test.sh vm_champs/champs/examples/slider2
+sh test.sh vm_champs/champs/examples/Survivor
+sh test.sh vm_champs/champs/examples/tdc2
+sh test.sh vm_champs/champs/examples/tdc3
+sh test.sh vm_champs/champs/examples/tdc4
+sh test.sh vm_champs/champs/examples/Torpille
+sh test.sh vm_champs/champs/examples/toto
+sh test.sh vm_champs/champs/examples/zork
+
+echo "\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Finish checking XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n"
