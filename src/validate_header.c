@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 19:29:38 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/11/01 19:34:38 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/11/09 18:53:37 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,25 @@ static char	*get_cmd_beginning(char *str)
 	return (temp);
 }
 
-static void	read_cmd_str_from_several_lines(t_asm *a, char *dest, void (*f)(char *, char *, int *), int *flag)
+static int	add_end_of_line(t_asm *a, char **temp, char *buff)
+{
+	char	**arr;
+
+	if (!good_cmnt(a->list->data))
+		exit(print_error_line(5, a->list->line_num));
+	arr = ft_strsplit(a->list->data, '"');
+	buff = ft_strjoin(*temp, arr[0]);
+	free(*temp);
+	*temp = buff;
+	ft_free_str_arr(&arr);
+	return (1);
+}
+
+static void	read_cmd_str_from_several_lines(t_asm *a, char *dest, \
+						void (*f)(char *, char *, int *), int *flag)
 {
 	char	*temp;
 	char	*buff;
-	char	**arr;
 	int		quot_num;
 
 	temp = get_cmd_beginning(a->list->data);
@@ -41,17 +55,8 @@ static void	read_cmd_str_from_several_lines(t_asm *a, char *dest, void (*f)(char
 			free(temp);
 			temp = buff;
 		}
-		else if (quot_num == 1)
-		{
-			if (!good_cmnt(a->list->data))
-				exit(print_error_line(5, a->list->line_num));
-			arr = ft_strsplit(a->list->data, '"');
-			buff = ft_strjoin(temp, arr[0]);
-			free(temp);
-			temp = buff;
-			ft_free_str_arr(&arr);
+		else if (quot_num == 1 && add_end_of_line(a, &temp, buff))
 			break ;
-		}
 		else
 			exit(print_error_line(5, a->list->line_num));
 	}

@@ -1,30 +1,33 @@
-clear
 echo "\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Starting checking XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n"
 
-sh test.sh vm_champs/champs/examples/42
-sh test.sh vm_champs/champs/examples/Backward
-sh test.sh vm_champs/champs/examples/barriere
-sh test.sh vm_champs/champs/examples/Car
-sh test.sh vm_champs/champs/examples/Death
-sh test.sh vm_champs/champs/examples/ex
-sh test.sh vm_champs/champs/examples/Gagnant
-sh test.sh vm_champs/champs/examples/jumper
-sh test.sh vm_champs/champs/examples/lde
-sh test.sh vm_champs/champs/examples/leeloo
-sh test.sh vm_champs/champs/examples/leeloo
-sh test.sh vm_champs/champs/examples/mat
-sh test.sh vm_champs/champs/examples/maxidef
-sh test.sh vm_champs/champs/examples/mortel
-sh test.sh vm_champs/champs/examples/new
-sh test.sh vm_champs/champs/examples/Octobre_Rouge_V4.2
-sh test.sh vm_champs/champs/examples/sebc
-sh test.sh vm_champs/champs/examples/slider2
-sh test.sh vm_champs/champs/examples/Survivor
-sh test.sh vm_champs/champs/examples/tdc2
-sh test.sh vm_champs/champs/examples/tdc3
-sh test.sh vm_champs/champs/examples/tdc4
-sh test.sh vm_champs/champs/examples/Torpille
-sh test.sh vm_champs/champs/examples/toto
-sh test.sh vm_champs/champs/examples/zork
+sh test.sh test_warriors/42
+sh test.sh test_warriors/Backward
+sh test.sh test_warriors/barriere
+sh test.sh test_warriors/Car
+sh test.sh test_warriors/Death
+sh test.sh test_warriors/ex
+sh test.sh test_warriors/Gagnant
+sh test.sh test_warriors/jumper
+sh test.sh test_warriors/lde
+sh test.sh test_warriors/leeloo
+sh test.sh test_warriors/leeloo
+sh test.sh test_warriors/mat
+sh test.sh test_warriors/maxidef
+sh test.sh test_warriors/mortel
+sh test.sh test_warriors/new
+sh test.sh test_warriors/Octobre_Rouge_V4.2
+sh test.sh test_warriors/sebc
+sh test.sh test_warriors/slider2
+sh test.sh test_warriors/Survivor
+sh test.sh test_warriors/tdc2
+sh test.sh test_warriors/tdc3
+sh test.sh test_warriors/tdc4
+sh test.sh test_warriors/Torpille
+sh test.sh test_warriors/toto
+sh test.sh test_warriors/empty
+sh test.sh test_warriors/empty1
+sh test.sh test_warriors/empty2
+sh test.sh test_warriors/empty3
+sh test.sh test_warriors/zork
 
 echo "\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Finish checking XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n"

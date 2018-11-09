@@ -6,46 +6,12 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 18:35:03 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/11/01 19:36:19 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/11/09 18:03:19 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "op.h"
 #include "asm.h"
-
-/*
-**static void	print_instructions(t_asm *a)
-**{
-**	t_labels *lbl = a->labels;
-**	t_ops *op;
-**	while (lbl)
-**	{
-**		op = lbl->ops;
-**		ft_printf("\tL:<%s>\n", lbl->name);
-**		while (op)
-**		{
-**			ft_printf("startByte<%u> endByte<%u> OPSTART<%u> Codage:<%0.8b> \
-** OP:<%s> Param:<%d><%d><%d>\n", lbl->start_byte, lbl->end_byte, \
-** op->start_byte,\
-** op->codage, op->op_ptr->name, op->param[0], op->param[1], op->param[2]);
-**			op = op->next;
-**		}
-**		lbl = lbl->next;
-**	}
-**}
-**
-**static void	print_lebel_ref(t_label_ref *ref)
-**{
-**	ft_printf("\n\n");
-**	while(ref)
-**	{
-**		ft_printf("OP %s refers to LB %s\n", ref->op->op_ptr->name, \
-**  ref->lable_name);
-**		ref = ref->next;
-**	}
-**}
-*/
 
 static void		null_t_asm_struct(t_asm *a)
 {

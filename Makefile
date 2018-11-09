@@ -55,6 +55,7 @@ clean:
 fclean:
 	rm -f $(NAME)
 	rm -rf $(OBJ_DIR)
+	rm -rf test_warriors/*.cor
 	make -C $(LIBFT_DIR) fclean
 
 # Re-make all files
