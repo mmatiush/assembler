@@ -6,7 +6,7 @@
 /*   By: mmatiush <mmatiush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:01:13 by mmatiush          #+#    #+#             */
-/*   Updated: 2018/11/01 18:50:00 by mmatiush         ###   ########.fr       */
+/*   Updated: 2018/11/13 19:39:24 by mmatiush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static void		handle_t_reg(t_asm *a, char *param_name, size_t param_index)
 	if (!(ft_isdigit(param_name[0])))
 		exit(print_err_line_param(12, a->list->line_num, param_name - 1));
 	n = ft_atoi(param_name);
+	if (n >= 100)
+		exit(print_err_line_param(15, a->list->line_num, param_name - 1));
 	if (ft_intlen(n) != ft_strlen(param_name))
 		exit(print_err_line_param(15, a->list->line_num, param_name - 1));
 	a->cur_op->param[param_index] = n;
